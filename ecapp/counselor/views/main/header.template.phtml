@@ -1,0 +1,18 @@
+<div class="row header">
+	<div class="navbar navbar-fixed-top span12">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">EduCounsel Logo</a>
+			<ul class="nav">
+				<li class="<?php $this->isActive('dashboard'); //param is controller name?>"><a href="/dashboard">Dashboard</a></li>
+				<li class="<?php $this->isActive('applications');?>"><a href="/applications">Applications</a></li>
+				<li class="<?php $this->isActive('activities');?>"><a href="/activities">Activities</a></li>
+				<li class="<?php $this->isActive('colleges');?>"><a href="/colleges-listing">Colleges List</a></li>
+				<li class="<?php $this->isActive('sat');?>"><a href="/sat-centers">SAT Centers</a></li>
+				<li class="<?php $this->isActive('visa');?>"><a href="/student-visa">Student Visa</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</div>
+<span class="clearfix"></span>
