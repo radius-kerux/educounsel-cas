@@ -41,7 +41,6 @@ $(document).ready(function(){
 			''
 			<? endif;?>
 	});
-	$('#calendar').fullCalendar('changeView', 'agendaWeek');
 });
 
 //------------------------------------------------------------------------------------
