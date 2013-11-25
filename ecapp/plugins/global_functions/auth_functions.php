@@ -28,7 +28,7 @@ function getValueFromAuth ( $index )
 function doAuth()
 {
 	$controller	=	str_replace ( 'Controller', '', Spine_GlobalRegistry::getRegistryValue('route', 'controller') );
-	echo $controller;
+
 	if ( $controller !== 'user')
 	{
 		checkAuth();

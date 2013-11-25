@@ -20,7 +20,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	{
 		$this->loadClasses();
 		
-		doAuth(); //a function inside plugins/global_functions/auth_functions.php
+		//doAuth(); //a function inside plugins/global_functions/auth_functions.php
 		
 		//displayPhtml gets the contents of the specified Phtml file				
 		//Then SPINE will put it in the place of specified section
@@ -45,6 +45,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		$this->getGlobalScripts();
 		$this->getLocalScripts();
 		$this->getProjectStylesheets();
+		$this->calendarIncludes();
 		//Spine_GlobalRegistry::viewRegistryContent();
 	}
 	
@@ -59,7 +60,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		//SPINE will send the header before the final output is sent
 		
 		$this->setHeaders("Cache-Control: public");
-		$this->setHeaders("Expires: Sat, 26 Jul 2016 05:00:00 GMT");
+		//$this->setHeaders("Expires: Sat, 26 Jul 2016 05:00:00 GMT");
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -106,5 +107,30 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		);
 		
 		$this->loadSpineClasses($classes_array);
+	}
+	
+	private function calendarIncludes()
+	{
+		$controller	=	getController();
+		
+		if ( $controller == 'dashboard' || $controller == 'activities' )
+		{
+			$this->includeExternalScript( 'calendar_external_script', 'plugins/fullcalendar/fullcalendar.min.js' );
+			$this->includeExternalScript( 'calendar_external_script', 'plugins/fullcalendar/gcal.js' );
+			$this->includeExternalScript( 'calendar_external_script', 'plugins/fullcalendar/jquery-ui.custom.min.js' );
+			//$this->includeExternalScript( 'calendar_external_script', SITE.'/views/main/js/calendar_top_script.js' );
+			
+			$this->includeInPageScript( 'local_bottom_script', 'main/js/calendar_bottom_script.js' );
+			
+			//------------------------------------------------------------------------------------
+			
+			$this->includeStyleSheet( 'calendar_stylesheet', 'plugins/fullcalendar/fullcalendar.css' );
+		}
+		else
+		{
+			$this->displayPhtml( 'calendar_stylesheet', 'REMOVE' ); //to remove section markers
+			$this->displayPhtml( 'calendar_external_script', 'REMOVE' );
+		}
+		
 	}
 }
