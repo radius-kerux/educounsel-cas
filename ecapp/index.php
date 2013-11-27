@@ -5,6 +5,7 @@ include_once 'includes.php';
 include_once 'SPINE/Spine_Core/SpineFrontController.php';
 
 /***added this text for test commit.***/
+
 try
 {
 	$spine	=	new Spine_FrontController();
