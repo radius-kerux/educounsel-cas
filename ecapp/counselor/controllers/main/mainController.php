@@ -20,7 +20,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	{
 		$this->loadClasses();
 		
-		//doAuth(); //a function inside plugins/global_functions/auth_functions.php
+		doAuth(); //a function inside plugins/global_functions/auth_functions.php
 		
 		//displayPhtml gets the contents of the specified Phtml file				
 		//Then SPINE will put it in the place of specified section
@@ -109,6 +109,8 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		$this->loadSpineClasses($classes_array);
 	}
 	
+	//------------------------------------------------------------------------------------
+	
 	private function calendarIncludes()
 	{
 		$controller	=	getController();
@@ -133,4 +135,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		}
 		
 	}
+	
+	//------------------------------------------------------------------------------------
+	
 }
