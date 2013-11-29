@@ -35,17 +35,19 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		//The third parameter is the $params - this actually are the data that you want to pass to your templates
 		//$params should be an associative array, you can access this data by using their array keys as variable name
 		//For example if you have array('title'=>'Hello World') you can utilize the data by accessing $title in the templates
-
+		
 		$params = array(
 							'title'=>'Counselor\'s Module',
 		);
 		
 		$this->displayPhtml('main_phtml', 'main/main', $params); //Rendering of main template
+		$this->displayPhtml('main_content', 'main/main_content');
 		$this->displayPhtml('header', 'main/header');
 		$this->getGlobalScripts();
 		$this->getLocalScripts();
 		$this->getProjectStylesheets();
 		$this->calendarIncludes();
+		$this->loadModules();
 		//Spine_GlobalRegistry::viewRegistryContent();
 	}
 	
@@ -134,6 +136,13 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 			$this->displayPhtml( 'calendar_external_script', 'REMOVE' );
 		}
 		
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function loadModules()
+	{
+		$this->loadModule('restfulCurl');
 	}
 	
 	//------------------------------------------------------------------------------------

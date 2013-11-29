@@ -13,8 +13,7 @@ class dashboard_mainController extends Spine_SuperController implements Spine_Ma
 	
 	public function main()
 	{
-		$this->displayPhtml( 'main_content', 'dashboard/dashboard_main' );
-		
+		$this->displayPhtml( 'content', 'dashboard/dashboard_main' );
 		$this->includeInPageScript( 'local_bottom_script', 'dashboard/js/dashboard_calendar_bottom_script.js' );
 	}
 	

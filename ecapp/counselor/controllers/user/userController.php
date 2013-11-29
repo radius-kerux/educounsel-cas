@@ -31,19 +31,15 @@ class userController extends Spine_SuperController
 			$data['username']	=	$_POST['username'];
 			$data['password']	=	$_POST['password'];
 			
-			$ch				=	curl_init($this->application_url);     
-			                                                                 
-			curl_setopt($ch, CURLOPT_POST, TRUE);                                                                   
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);                                                                  
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);                                                                      
-			
-			$result =	curl_exec($ch);
-			$status	=	curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			
+			$restful_curl	=	new	restfulCurl();
+			$restful_curl->application_url	=	DATA_RESOURCE_URL.'users/verify';
+			$restful_curl->postData($data);
+			$status	=	$restful_curl->response_code;
+			$result	=	$restful_curl->result;
+
 			if ($status == '202')
 			{
-				auth::getInstance()->storeCredentials(json_decode($result, true), '');
-				header('location: /dashboard/');
+				storeAuthCredentials(array('credentials'=>$result), 'dashboard/');
 			}
 			else 
 				header('location: /user/login?inv=1');
@@ -59,7 +55,20 @@ class userController extends Spine_SuperController
 	
 	public function logoutAction()
 	{
-		auth::getInstance()->flush('user/login');
+		checkAuth(); //to start Auth within this action
+		$data	=	getValueFromAuth('credentials');
+		$data	=	json_decode($data, TRUE);
+		$data	=	array(
+						'user_id'		=> $data['user_id'],
+						'password'		=> $data['password'],
+						'access_token'	=> $data['access_token'],
+						'username'		=> $data['username']
+					);
+		flushAuth();
+		
+		$restful_curl					=	new	restfulCurl();
+		$restful_curl->application_url	=	DATA_RESOURCE_URL.'users/flush-token';
+		$restful_curl->postData($data);
 	}
 	
 	//------------------------------------------------------------------------------------

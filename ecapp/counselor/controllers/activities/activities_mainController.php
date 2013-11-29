@@ -13,7 +13,7 @@ class activities_mainController extends Spine_SuperController implements Spine_M
 	
 	public function main()
 	{
-		$this->displayPhtml( 'main_content', 'activities/activities_main' );
+		$this->displayPhtml( 'content', 'activities/activities_main' );
 		$this->includeInPageScript( 'local_bottom_script', 'activities/js/activities_calendar_bottom_script.js' );
 	}
 	

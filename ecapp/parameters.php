@@ -30,3 +30,7 @@ define('SPINE_CORE', SPINE.DS.'Spine_Core');
 define('USE_SESSION', false);
 define('HASH_KEY', 'hashkeySpine1234567890######');
 
+//------------------------------------------------------------------------------------
+
+define('DATA_RESOURCE_URL', 'http://ec-resource/');
+
