@@ -8,12 +8,21 @@ class userController extends Spine_SuperController
 	public function main()
 	{
 		$this->displayPhtml('main_content', 'user/user_main');
+		
+		$action	=	$this->getRoutedAction();
+		
+		if ($action !== 'loginAction') //
+		{
+			checkAuth();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------
 	
 	public function indexAction()
 	{
+		header ('location: /user/login');
+		exit;
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -39,6 +48,8 @@ class userController extends Spine_SuperController
 
 			if ($status == '202')
 			{
+				$filebase_json_handler	=	 new	filebaseJsonHandler();
+				$filebase_json_handler->createTable('user_profile', $result);
 				storeAuthCredentials(array('credentials'=>$result), 'dashboard/');
 			}
 			else 
@@ -47,7 +58,13 @@ class userController extends Spine_SuperController
 		}
 		else
 		{
-			$this->displayPhtml('user_login', 'user/user_login');
+			if (checkAuth(FALSE))
+			{
+				header('location: /dashboard');
+				exit;
+			}
+			
+			$this->displayPhtml('content', 'user/user_login');
 		}
 	}
 	
@@ -55,7 +72,7 @@ class userController extends Spine_SuperController
 	
 	public function logoutAction()
 	{
-		checkAuth(); //to start Auth within this action
+		 //to start Auth within this action
 		$data	=	getValueFromAuth('credentials');
 		$data	=	json_decode($data, TRUE);
 		$data	=	array(
@@ -64,11 +81,33 @@ class userController extends Spine_SuperController
 						'access_token'	=> $data['access_token'],
 						'username'		=> $data['username']
 					);
+		
+		$filebase_json_handler	=	 new	filebaseJsonHandler();
+		$filebase_json_handler->dropTable('user_profile');
 		flushAuth();
 		
 		$restful_curl					=	new	restfulCurl();
 		$restful_curl->application_url	=	DATA_RESOURCE_URL.'users/flush-token';
 		$restful_curl->postData($data);
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	public function editProfileAction()
+	{
+		$filebase_json_handler	=	 new	filebaseJsonHandler();
+		
+		$user_data	=	$filebase_json_handler->selectAll('user_profile');
+		$user_data	=	json_decode($user_data, TRUE); 
+		
+		$this->displayPhtml('content', 'user/user_profile', array('user_data' => $user_data));
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	public function saveProfileAction() //this has to be ajax
+	{
+		dumpData($_POST);
 	}
 	
 	//------------------------------------------------------------------------------------

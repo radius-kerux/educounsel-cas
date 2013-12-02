@@ -143,6 +143,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	private function loadModules()
 	{
 		$this->loadModule('restfulCurl');
+		$this->loadModule('filebase_json_handler');
 	}
 	
 	//------------------------------------------------------------------------------------

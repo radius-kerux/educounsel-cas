@@ -15,25 +15,6 @@ class dashboardController extends Spine_SuperController
 	
 //------------------------------------------------------------------------------------
 	
-	public function logoutAction()
-	{
-		$data	=	getValueFromAuth('credentials');
-		$data	=	json_decode($data, TRUE);
-		$data	=	array(
-						'user_id'		=> $data['user_id'],
-						'password'		=> $data['password'],
-						'access_token'	=> $data['access_token'],
-						'username'		=> $data['username']
-					);
-		flushAuth();
-		
-		$restful_curl					=	new	restfulCurl();
-		$restful_curl->application_url	=	DATA_RESOURCE_URL.'users/flush-token';
-		$restful_curl->postData($data);
-	}
-	
-//------------------------------------------------------------------------------------
-	
 	public function testAction()
 	{
 		$this->displayPhtml('calendar', 'test/test');

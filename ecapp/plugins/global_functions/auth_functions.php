@@ -1,8 +1,8 @@
 <?php 
 
-function checkAuth()
+function checkAuth($allow_redirect	=	TRUE)
 {
-	return	auth::getInstance()->checkAuth('user/login/');
+	return	auth::getInstance()->checkAuth('user/login/', $allow_redirect);
 }
 
 //------------------------------------------------------------------------------------

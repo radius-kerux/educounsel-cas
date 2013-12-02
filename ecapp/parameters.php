@@ -34,3 +34,7 @@ define('HASH_KEY', 'hashkeySpine1234567890######');
 
 define('DATA_RESOURCE_URL', 'http://ec-resource/');
 
+//------------------------------------------------------------------------------------
+
+define('USER_DATA', SITE.'/data/user');
+
