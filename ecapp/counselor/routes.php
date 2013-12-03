@@ -23,7 +23,7 @@ class routes extends Spine_RouteAbstract
 	'applications'		=>	array(
 			'_name'		=>	'applications'
 		),
-	'colleges-listing'	=>	array(
+	'colleges'			=>	array(
 			'_name'		=>	'colleges'
 		),
 	'sat-centers'		=>	array(

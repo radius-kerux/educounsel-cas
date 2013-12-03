@@ -1,0 +1,15 @@
+<div class="row content">
+<div class="container">
+	<div class="row-fluid">
+		<? foreach ($colleges as $colleges_index => $college ):?>
+			<div id="<?=strtolower($colleges_index)?>">
+				<h3><?=$colleges_index?></h3>
+				<? ksort($college);?>
+				<? foreach ($college as $college_index => $college_info):?>
+					<span><a href="/colleges/profile/cc/<?=$college_info['college_code']?>"><?=$college_index?></a></span><br/>
+				<? endforeach;?>
+			</div>
+		<? endforeach;?>
+	</div>
+</div>
+</div>
