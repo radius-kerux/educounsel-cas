@@ -13,6 +13,7 @@ class applications_mainController extends Spine_SuperController implements Spine
 	
 	public function main()
 	{
+		echo "test";
 	}
 	
 	//------------------------------------------------------------------------------------
