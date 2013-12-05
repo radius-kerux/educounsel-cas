@@ -88,6 +88,9 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/header.css');
 		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/footer.css');
 		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/main.css');
+		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/normalize.css');
+		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/screen.css');
+		$this->includeStyleSheet('global_stylesheet', SITE.'/views/main/css/typography.css');
 	}
 	
 	//------------------------------------------------------------------------------------
