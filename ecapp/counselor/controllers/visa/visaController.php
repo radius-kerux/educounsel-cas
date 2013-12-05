@@ -63,7 +63,7 @@ class visaController extends Spine_SuperController
 
     public function emailAgencyAction()
     {
-        //kuya mon ganito muna
+        // kuya mon ganito muna
         $headers = "MIME-Version: 1.0\r\nContent-type: text/html\r\nFrom: kevin.baisas@yahoo.com";
 
         mail($_POST["student"], "Dummy email", $_POST["student_info"], $headers);

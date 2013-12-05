@@ -5,6 +5,8 @@ $(document).ready(function(){
         $.php("/visa/emailAgency", $(this).serialize());
     });
 
+//------------------------------------------------------------------------------------------
+
     $("select[name=student]").change(function(){
         var id = $(this).val();
         $.php("/visa/changeUser", {id:id});

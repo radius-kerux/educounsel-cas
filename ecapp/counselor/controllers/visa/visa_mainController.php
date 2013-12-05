@@ -13,7 +13,7 @@ class visa_mainController extends Spine_SuperController implements Spine_MainInt
 
     public function main()
     {
-        $this->displayPhtml( 'main_content', 'visa/visa_main' );
+        $this->displayPhtml('main_content', 'visa/visa_main');
         $this->renderLocalScript('local_bottom_script', 'visa/js/local_bottom_script.js');
     }
     //------------------------------------------------------------------------------------
