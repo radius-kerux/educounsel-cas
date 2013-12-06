@@ -1,0 +1,23 @@
+<form name="email_agency">
+    <div>
+        <span>Student: </span>
+        <select name="student">
+            <option value="kevin.baisas@yahoo.com">Kevin Baisas</option>
+            <option value="raymart.marasigan@gmail.com">Raymart Marasigan</option>
+            <option value="raymond.baldonado@gmail.com">Raymond Baldonado</option>
+            <option value="rye.ona@gmail.com">Reynaldo Ona</option>
+            <option value="hans.alli@gmail.com">Hans Alli</option>
+        </select>
+    </div>
+    <div>
+        <span>Student Info: </span>
+        <textarea name="student_info">
+            First Name : <?php echo $user_data->firstname."\n"; ?>
+            Last Name : <?php echo $user_data->lastname."\n"; ?>
+            Project : <?php echo $user_data->project."\n"; ?>
+        </textarea>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
