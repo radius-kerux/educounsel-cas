@@ -1,0 +1,16 @@
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/global';
+
+@CHARSET "ISO-8859-1";
+.navbar{  
+  margin: auto;
+  .nav{
+    li{
+      a{
+        font:{
+          family:'century-gothicb';
+          size:1.0em;
+        }
+      }
+    }
+  }
+}
