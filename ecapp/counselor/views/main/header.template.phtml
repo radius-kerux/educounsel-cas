@@ -1,19 +1,20 @@
-<div class="row header">
-	<div class="span12">
+<div class="row header clearfix">
+	<div class="upperHeader pAs">
 		<a class="brand" title="Educounsel" href="/"><img src="/counselor/views/main/images/logo/educaounsel-logo.png" alt="Educounsel"/></a>
+		<div class="col-xs-2 fright">
+			<?php $this->displayBlock('user_profile/user_profile', 'displayUserProfile');?>
+		</div>
 	</div>
-	<div class="navbar span12">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav">
-					<li class="<?php $this->isActive('dashboard'); //param is controller name?>"><a href="/dashboard">Dashboard</a></li>
-					<li class="<?php $this->isActive('applications');?>"><a href="/applications">Applications</a></li>
-					<li class="<?php $this->isActive('activities');?>"><a href="/activities">Activities</a></li>
-					<li class="<?php $this->isActive('colleges');?>"><a href="/colleges">Colleges List</a></li>
-					<li class="<?php $this->isActive('sat');?>"><a href="/sat-centers">SAT Centers</a></li>
-					<li class="<?php $this->isActive('visa');?>"><a href="/student-visa">Student Visa</a></li>
-				</ul>
-			</div>
+	<div class="navbar col-xs-12">
+		<div class="navbar container">
+			<ul class="nav">
+				<li class="<?php $this->isActive('dashboard'); //param is controller name?>"><a href="/dashboard">Dashboard</a></li>
+				<li class="<?php $this->isActive('applications');?>"><a href="/applications">Applications</a></li>
+				<li class="<?php $this->isActive('activities');?>"><a href="/activities">Activities</a></li>
+				<li class="<?php $this->isActive('colleges');?>"><a href="/colleges">Colleges List</a></li>
+				<li class="<?php $this->isActive('sat');?>"><a href="/sat-centers">SAT Centers</a></li>
+				<li class="<?php $this->isActive('visa');?>"><a href="/student-visa">Student Visa</a></li>
+			</ul>
 		</div>
 	</div>
 </div>
