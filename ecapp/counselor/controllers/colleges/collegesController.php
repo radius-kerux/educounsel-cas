@@ -9,18 +9,7 @@ class collegesController extends Spine_SuperController
 	
 	public function indexAction()
 	{
-		
-		$college_list	=	$this->getCollegeList();
-		$college_list	=	json_decode($college_list, TRUE);
-		
-		foreach ($college_list as $college_list_index => $college_info)
-		{
-			$college_name	=	$college_info['college_name'];
-			$colleges_array[strtoupper($college_name[0])][$college_name]	=	$college_info;
-		}
-		
-		ksort($colleges_array);
-		
+		$colleges_array	=	$this->sortCollegesAlphabetically();
 		$this->displayPhtml('content', 'colleges/colleges_main', array('colleges' => $colleges_array));
 	}
 	
@@ -52,8 +41,8 @@ class collegesController extends Spine_SuperController
 	{
 		if (verifyCurlToken() != 401)
 		{
-			//$college_code	=	$this->getParametersPair('code')?$this->getParametersPair('code'):1;
-			$result	=	$this->checkCache('colleges_listings_data');
+			$result	=	$this->checkCache('colleges');
+
 			if (!$result)
 			{
 				$restful_curl	=	new	restfulCurl();
@@ -64,7 +53,36 @@ class collegesController extends Spine_SuperController
 				$status	=	$restful_curl->response_code;
 				$result	=	$restful_curl->result;
 
-				$this->cache('colleges_listings_data', $result);
+				$this->cache('colleges', $result);
+				if ($status	== 200)
+					return	$result;
+					
+				return FALSE;
+			}
+			return $result;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function getZipcodes()
+	{
+		if (verifyCurlToken() != 401)
+		{
+			$result	=	$this->checkCache('zipcodes');
+			
+			if (!$result)
+			{
+				$restful_curl	=	new	restfulCurl();
+				
+				$restful_curl->application_url	=	DATA_RESOURCE_URL.'data-resources/get-zipcodes';
+				$restful_curl->postData(array('college_code' => 'college'));
+				
+				$status	=	$restful_curl->response_code;
+				$result	=	$restful_curl->result;
+
+				$this->cache('zipcodes', $result);
+				
 				if ($status	== 200)
 					return	$result;
 					
@@ -94,8 +112,6 @@ class collegesController extends Spine_SuperController
 			
 			return	$result;
 		}
-		
-		
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -110,5 +126,63 @@ class collegesController extends Spine_SuperController
 				return $college['email_address'];
 			}
 		}
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function sortCollegeByState()
+	{
+		$result	=	$this->checkCache('colleges_sorted_by_state');
+		
+		if (!$result)
+		{
+			$colleges	=	$this->getCollegeList();
+			$colleges	=	json_decode($colleges, TRUE);
+	
+			$zipcodes	=	$this->getZipcodes();
+			$zipcodes	=	json_decode($zipcodes, TRUE);
+			
+			$result_array	=	array();
+			
+			foreach ($zipcodes as $zipcode_index => $zipcode)
+			{
+				$zipcode['zip']	=	(string) zeroFillZip($zipcode['zip']);
+				
+				foreach ($colleges as $college_index => $college)
+				{
+					if ($zipcode['zip'] == $college['zipcode'])
+					{
+						$result_array[$zipcode['state_fullname']][$zipcode['city']][$zipcode['zip']][$college['college_name']]	=	$college;
+					}
+				}
+			}
+			$result	=	$result_array;
+			$this->cache('colleges_sorted_by_state', $result);
+		}
+		return	$result;
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function sortCollegesAlphabetically()
+	{
+		$colleges_array	=	$this->checkCache('colleges_sorted_by_alphabetically');
+		
+		if (!$colleges_array)
+		{
+			$college_list	=	$this->getCollegeList();
+			$college_list	=	json_decode($college_list, TRUE);
+			
+			foreach ($college_list as $college_list_index => $college_info)
+			{
+				$college_name	=	$college_info['college_name'];
+				$colleges_array[strtoupper($college_name[0])][$college_name]	=	$college_info;
+			}
+			
+			ksort($colleges_array);
+			
+			$this->cache('colleges_sorted_by_alphabetically', $colleges_array);
+		}
+		return	$colleges_array;
 	}
 }
