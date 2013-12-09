@@ -1,9 +1,11 @@
 <div class="row header clearfix">
 	<div class="upperHeader pAs">
 		<a class="brand" title="Educounsel" href="/"><img src="/counselor/views/main/images/logo/educaounsel-logo.png" alt="Educounsel"/></a>
+		<?php if (checkAuth(FALSE)):?>
 		<div class="col-xs-2 fright">
 			<?php $this->displayBlock('user_profile/user_profile', 'displayUserProfile');?>
 		</div>
+		<?endif;?>
 	</div>
 	<div class="navbar col-xs-12">
 		<div class="navbar container">
