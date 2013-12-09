@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import 'C:/WORKSPACE/spine/website/views/main/scss/core/global';
 
 @CHARSET "ISO-8859-1";
@@ -6,4 +7,50 @@
 }
 .navbar{  
   margin: auto;
+=======
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/global';
+@CHARSET "ISO-8859-1";
+.header{
+  .upperHeader{
+    .accountPanel{
+      .profileImage{
+        @include fitImage(37px,38px);
+      }
+      p,a{
+        margin:0;
+        line-height:13.5px;
+        display:block;
+        color:$gray;
+        font:{
+          family:'century-gothicb';
+          size:1.0em;
+        }
+      }
+    }
+  }
+  .navbar{
+    margin: auto;
+    ul.nav{
+      padding:0!important;
+      li{
+        background-color:$lightGray;
+        a{
+          padding: 10px 64px 10px!important;
+          color:$white;
+          letter-spacing: 1px;
+          font:{
+            family:'century-gothicb';
+            size:1.0em;
+          }
+        }
+        &.active{
+          background-color:$gray!important;
+          a{
+            background-color:$gray!important;
+          }
+        }
+      }
+    }
+  }
+>>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
 }

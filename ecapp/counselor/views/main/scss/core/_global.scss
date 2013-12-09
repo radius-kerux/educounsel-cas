@@ -1,6 +1,7 @@
 //** for reference go to http://sass-lang.com ***********************************************************************//
 // @import is static therefore variable can't be used to specify directories
 $project        :'educounsel-cas' !default;
+<<<<<<< HEAD
 $root_path      : 'C:/educounsel-cas/' !default;
 
 @import 'C:/WORKSPACE/educounsel-cas/website/views/main/scss/base/settings';
@@ -9,6 +10,17 @@ $root_path      : 'C:/educounsel-cas/' !default;
 @import 'C:/WORKSPACE/educounsel-cas/website/views/main/scss/base/colorschemes';
 @import 'C:/WORKSPACE/educounsel-cas/website/views/main/scss/base/gradients';
 @import 'C:/WORKSPACE/educounsel-cas/website/views/main/scss/core/mixins';
+=======
+$root_path      : 'C:/WORKSPACE/' !default;
+
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/settings';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/bootstrap';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/constants';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/images';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/colorschemes';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/gradients';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/mixins';
+>>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
 
 
 

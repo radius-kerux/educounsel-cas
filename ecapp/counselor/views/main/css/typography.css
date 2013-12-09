@@ -454,8 +454,14 @@ h6 {
   font-weight: normal; }
 
 @font-face {
+<<<<<<< HEAD
   font-family: "AvenirLTStd-Light";
   src: url("/website/views/main/css/fonts/avenirltstdlight.eot");
   src: url("/website/views/main/css/fonts/avenirltstdlight.eot?#iefix") format("embedded-opentype"), url("/website/views/main/css/fonts/avenirltstdlight.woff") format("woff"), url("/website/views/main/css/fonts/avenirltstdlight.ttf") format("truetype"), url("/website/views/main/css/fonts/avenirltstdlight.svg#avenirltstdlight") format("svg");
+=======
+  font-family: "century-gothicb";
+  src: url("/counselor/views/main/css/fonts/gothicb-webfont.eot");
+  src: url("/counselor/views/main/css/fonts/gothicb-webfont.eot?#iefix") format("embedded-opentype"), url("/counselor/views/main/css/fonts/gothicb-webfont.woff") format("woff"), url("/counselor/views/main/css/fonts/gothicb-webfont.ttf") format("truetype"), url("/counselor/views/main/css/fonts/gothicb-webfont.svg#gothicb-webfont") format("svg");
+>>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
   font-weight: normal;
   font-style: normal; }
