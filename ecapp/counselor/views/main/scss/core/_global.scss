@@ -1,0 +1,20 @@
+//** for reference go to http://sass-lang.com ***********************************************************************//
+// @import is static therefore variable can't be used to specify directories
+$project        :'educounsel-cas' !default;
+$root_path      : 'C:/WORKSPACE/' !default;
+
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/settings';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/bootstrap';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/constants';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/images';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/colorschemes';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/base/gradients';
+@import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/mixins';
+
+
+
+
+
+
+
+
