@@ -166,7 +166,7 @@ class collegesController extends Spine_SuperController
 	
 	private function sortCollegesAlphabetically()
 	{
-		$colleges_array	=	$this->checkCache('colleges_sorted_by_alphabetically');
+		$colleges_array	=	$this->checkCache('colleges_sorted_alphabetically');
 		
 		if (!$colleges_array)
 		{
@@ -181,7 +181,7 @@ class collegesController extends Spine_SuperController
 			
 			ksort($colleges_array);
 			
-			$this->cache('colleges_sorted_by_alphabetically', $colleges_array);
+			$this->cache('colleges_sorted_alphabetically', $colleges_array);
 		}
 		return	$colleges_array;
 	}
