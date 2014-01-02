@@ -1,0 +1,33 @@
+<div class="sectionContainer" data-column="family" data-section_name="household">
+	<div>
+		<b>Hosehold</b>
+	</div>
+	<div>
+		<span class="clearfix">Parent Marital Status (relative to each other)*</span>
+		<?php $values = array("Married", "Seperated", "Divorced", "Never married", "Widowed", "Civil Union/Domestic Partner")?>
+		<?php isset($household["marital_status"]) ? $value = $household["marital_status"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "marital_status", "Select Marital Status", $value)?>
+	</div>
+	<div>
+		<span class="clearfix">With whom do you make your permanent home*</span>
+		<?php $values = array("Parent 1", "Parent 2", "Both")?>
+		<?php isset($household["permanent_home"]) ? $value = $household["permanent_home"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "permanent_home", "Select permanent home", $value)?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Do you have any children?*</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($household["has_children"]) ? $value = $household["has_children"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "has_children", $value, TRUE, "conditionalQuestionForRadioButtons")?>
+	</div>
+	
+	<?php (isset($household["has_children"]) && $household["has_children"] != "No")? $class="" : $class="hide";?>
+	<div class="has_children <?php echo $class?>" data-answer="Yes">
+		<div>
+			<span class="clearfix">How many?</span>
+			<input type="text" name="number_of_children" value="<?php echo isset($household["number_of_children"]) ? $household["number_of_children"] : "" ?>" />
+		</div>
+	</div>
+	
+</div>

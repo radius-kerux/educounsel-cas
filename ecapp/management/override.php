@@ -33,4 +33,5 @@ class override extends Spine_OverrideAbstract
 		echo 'Hi '.$parameters['name'].'!'.
 			'<br/>'.$parameters['message'];
 	}
+	
 }

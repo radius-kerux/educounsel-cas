@@ -1,0 +1,10 @@
+<div>
+	<form action="/user/save-profile" method="POST">
+		<img src="data:image/jpg;JPEG;gif;png;base64,<?=$user_data['photo']?>"><br/>
+		<span><label for="username">Username</label><input type="text" name="username" id="username" value="<?=$user_data['username']?>" /></span><br/>
+		<span><label for="firstname">firstname</label><input type="text" name="firstname" id="firstname" value="<?=ucwords($user_data['firstname'])?>" /></span><br/>
+		<span><label for="lastname">lastname</label><input type="text" name="lastname" id="lastname" value="<?=ucwords($user_data['lastname'])?>" /></span><br/>
+		<span><label for="email_address">lastname</label><input type="text" name="email_address" id="email_address" value="<?=$user_data['email_address']?>" /></span><br/>
+		<input type="submit" value="submit"> 
+	</form>
+</div>

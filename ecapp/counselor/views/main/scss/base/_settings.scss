@@ -1,20 +1,11 @@
 //Framework directory options
-<<<<<<< HEAD
-$mainLayout_path      :'/website/views/main/' !default;
-=======
 $mainLayout_path      :'/counselor/views/main/' !default;
->>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
 $scss_path            : '#{$mainLayout_path}scss/' !default;
 $framework_directory  : '#{$root_path}#{$project}#{$scss_path}' !default;
 $mainScripts_path     : '#{$mainLayout_path}js/' !default;
 $fonts_path           : '#{$mainLayout_path}css/fonts' !default;
 
-<<<<<<< HEAD
-$image_path           : '/website/views/main/images' !default;
-=======
 $image_path           : '/counselor/views/main/images' !default;
->>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
-
 $sprites              : '#{$image_path}/sprites/' !default;
 
 $boxsizing_path       : '#{$mainScripts_path}boxsizing.htc';

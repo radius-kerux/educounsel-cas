@@ -1,0 +1,59 @@
+<div class="sectionContainer" data-column="testing" data-section_name="ielst">
+	<div>
+		<b>ielst Tests</b>
+	</div>
+	
+	<div>
+		<span class="clearfix">Number of times  you have taken the ielst*?</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_ielst", "", isset($ielst["number_of_ielst"]) ? $ielst["number_of_ielst"] : "", "selectCounter conditionalQuestionForSelect")?>
+	</div>
+	
+	<!-- conditional divs for 0 -->
+	<?php (isset($ielst["number_of_ielst"]) && $ielst["number_of_ielst"] == "0")? $class="" : $class="hide";?>
+	<div class="number_of_ielst <?php echo $class?>" data-answer="0">
+		<span class="clearfix">Future Testing Date</span>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "testing_date_months", "Select Months", isset($ielst["testing_date_months"]) ? $ielst["testing_date_months"] : "")?>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "testing_date_years", "YYYY", isset($ielst["testing_date_years"]) ? $ielst["testing_date_years"] : "")?>
+	</div>
+	
+	<div id="number_of_ielst">
+	<?php (isset($ielst["number_of_ielst"]))? $counter = $ielst["number_of_ielst"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_ielst_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+		<div>
+			<span class="clearfix">Highest critical score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_critical_score$i", "", isset($ielst["highest_critical_score$i"]) ? $ielst["highest_critical_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Critial Reading Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "critical_date_months$i", "Select Months", isset($ielst["critical_date_months$i"]) ? $ielst["critical_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "critical_date_days$i", "dd", isset($ielst["critical_date_days$i"]) ? $ielst["critical_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "critical_date_years$i", "YYYY", isset($ielst["critical_date_years$i"]) ? $ielst["critical_date_years$i"] : "")?>
+		</div>
+		
+		<div>
+			<span class="clearfix">Highest match score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_match_score$i", "", isset($ielst["highest_match_score$i"]) ? $ielst["highest_match_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">match Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "match_date_months$i", "Select Months", isset($ielst["match_date_months$i"]) ? $ielst["match_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "match_date_days$i", "dd", isset($ielst["match_date_days$i"]) ? $ielst["match_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "match_date_years$i", "YYYY", isset($ielst["match_date_years$i"]) ? $ielst["match_date_years$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Highest writing score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_writing_score$i", "", isset($ielst["highest_writing_score$i"]) ? $ielst["highest_writing_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">writing Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "writing_date_months$i", "Select Months", isset($ielst["writing_date_months$i"]) ? $ielst["writing_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "writing_date_days$i", "dd", isset($ielst["writing_date_days$i"]) ? $ielst["writing_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "writing_date_years$i", "YYYY", isset($ielst["writing_date_years$i"]) ? $ielst["writing_date_years$i"] : "")?>
+		</div>
+	</div>
+	<?php endfor?>
+	</div>	
+</div>

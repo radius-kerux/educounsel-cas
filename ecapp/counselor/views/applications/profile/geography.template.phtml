@@ -1,0 +1,22 @@
+<div class="sectionContainer" data-column="profile" data-section_name="geography">
+	<div>
+		<b>Geography</b>
+	</div>
+	<div>
+		<span class="clearfix">Country Of Birth*</span>
+		<?php $values = array("Philippines", "US", "Japan", "II", "III")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "country_of_birth", "Country", isset($geography["country_of_birth"]) ? $geography["country_of_birth"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">City Of Birth*</span>
+		<input type="text" name="city_of_birth"  value="<?php echo isset($geography["city_of_birth"]) ? $geography["city_of_birth"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Number of years you have lived outside the United States*</span>
+		<input type="text" name="number_years_outside_us"  value="<?php echo isset($geography["number_years_outside_us"]) ? $geography["number_years_outside_us"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Number of years you have lived inside the United States*</span>
+		<input type="text" name="number_years_inside_us"  value="<?php echo isset($geography["number_years_inside_us"]) ? $geography["number_years_inside_us"] : ""; ?>" />
+	</div>
+</div>

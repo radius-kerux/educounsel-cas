@@ -1,7 +1,7 @@
 <?php
 
 define('SPINE', 'SPINE');
-define('SITE', 'counselor');
+!defined('SITE')? define('SITE', 'counselor'): '';
 
 //------------------------------------------------------------------------------------
 
@@ -21,13 +21,7 @@ define('DEFAULT_METHOD', 'index');
 
 //------------------------------------------------------------------------------------
 
-define('DS', DIRECTORY_SEPARATOR);
-define('PS', PATH_SEPARATOR);
-define('SPINE_CORE', SPINE.DS.'Spine_Core');
-
-//------------------------------------------------------------------------------------
 //This will be used by Auths
-define('USE_SESSION', false);
 define('HASH_KEY', 'hashkeySpine1234567890######');
 
 //------------------------------------------------------------------------------------

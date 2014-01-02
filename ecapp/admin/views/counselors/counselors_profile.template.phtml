@@ -1,0 +1,66 @@
+<spine::popup_dialog/>
+<div>
+	<form name="counselor_form">
+		<div>
+			<?php if($page_details->action == "edit") : ?>
+				<input type="hidden" name="user_id" value="<?php echo $page_details->user_id; ?>" />
+			<?php endif; ?>
+			
+			<input type="text" name="username" placeholder="Username" value="<?php echo isset($page_details->username)? $page_details->username:""; ?>" />
+			<span class="required" data-id="invalid_username" style="display:none;">Invalid Username</span>
+			<div><span>Username</span></div>
+			<input type="password" name="password" placeholder="Password" />
+			<span class="required" data-id="invalid_password" style="display:none;">Invalid Password</span>
+			<div><span>Password</span></div>
+			<input type="password" name="repassword" placeholder="Retype Password" />
+			<span class="required" data-id="invalid_repassword" style="display:none;">Invalid Password</span>
+			<div><span>Retype Password</span></div>
+		</div>
+		<div>
+			<input type="text" name="first_name" placeholder="First Name" value="<?php echo isset($page_details->firstname)? $page_details->firstname:""; ?>" />
+			<span class="required" data-id="invalid_first_name" style="display:none;">Invalid First Name</span>
+			<input type="text" name="last_name" placeholder="Last Name" value="<?php echo isset($page_details->lastname)? $page_details->lastname:""; ?>" />
+			<span class="required" data-id="invalid_last_name" style="display:none;">Invalid Last Name</span>
+			<div><span>Applicants Name</span></div>
+		</div>
+		<div>
+			<input type="text" name="birth_date" placeholder="Date of Birth" value="<?php echo isset($page_details->contact_details->birth_date)? $page_details->contact_details->birth_date:""; ?>" />
+			<span class="required" data-id="invalid_birth_date" style="display:none;">Invalid Birth Date</span>
+			<div><span>Date of Birth</span></div>
+			<input type="text" name="birth_place" placeholder="Place of Birth" value="<?php echo isset($page_details->contact_details->birth_place)? $page_details->contact_details->birth_place:""; ?>" />
+			<span class="required" data-id="invalid_birth_place" style="display:none;">Invalid Birth Place</span>
+			<div><span>Place of Birth</span></div>
+		</div>
+		<div>
+			<input type="text" name="permanent_address" placeholder="Permanent Address" value="<?php echo isset($page_details->contact_details->permanent_address)? $page_details->contact_details->permanent_address:""; ?>" />
+			<span class="required" data-id="invalid_permanent_address" style="display:none;">Invalid Permanent Address</span>
+			<div><span>Permanent Address</span></div>
+		</div>
+		<div>
+			<input type="text" name="city" placeholder="City" value="<?php echo isset($page_details->contact_details->city)? $page_details->contact_details->city:""; ?>" />
+			<span class="required" data-id="invalid_city" style="display:none;">Invalid City</span>
+			<div><span>City</span></div>
+			<input type="text" name="postal_code" placeholder="Postal Code" value="<?php echo isset($page_details->contact_details->postal_code)? $page_details->contact_details->postal_code:""; ?>" />
+			<span class="required" data-id="invalid_postal_code" style="display:none;">Invalid Postal Code</span>
+			<div><span>Postal Code</span></div>
+		</div>
+		<div>
+			<input type="text" name="mobile_number" placeholder="Mobile No." value="<?php echo isset($page_details->contact_details->mobile_number)? $page_details->contact_details->mobile_number:""; ?>" />
+			<span class="required" data-id="invalid_mobile_number" style="display:none;">Invalid Mobile Number</span>
+			<div><span>Mobile Number</span></div>
+		</div>
+		<div>
+			<input type="text" name="email" placeholder="Email Address" value="<?php echo isset($page_details->email_address)? $page_details->email_address:""; ?>" />
+			<span class="required" data-id="invalid_email" style="display:none;">Invalid Email Address</span>
+			<div><span>Email Address</span></div>
+		</div>
+		<div>
+			<input type="submit" name="submitform" value="Save" />
+			<span>Cancel</span>
+			
+			<?php if($page_details->action == "edit") : ?>
+				<span>Delete</span>
+			<?php endif; ?>
+		</div>
+	</form>
+</div>

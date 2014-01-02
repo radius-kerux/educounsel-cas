@@ -1,0 +1,60 @@
+<div class="sectionContainer" data-column="profile" data-section_name="personal_information">
+	<div>
+		<b>Personal Information</b>
+	</div>
+	<div>
+		<span class="clearfix">First/Given Name*</span>
+		<input type="text" name="first_name"  value="<?php echo isset($personal_information["first_name"]) ? $personal_information["first_name"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Middle Name*</span>
+		<input type="text" name="middle_name" value="<?php echo isset($personal_information["middle_name"]) ? $personal_information["middle_name"] : "";?>" />
+	</div>
+	<div>
+		<span class="clearfix">Last/Family/Surname*</span>
+		<input type="text" name="family_name" value="<?php echo isset($personal_information["family_name"]) ? $personal_information["family_name"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Suffix</span>
+		<?php $values = array("Jr.", "Sr.", "I", "II", "III")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "suffix", "Suffix", isset($personal_information["suffix"]) ? $personal_information["suffix"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">Have you ever used other names?*</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($personal_information["has_other_names"]) ? $value = $personal_information["has_other_names"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "has_other_names", $value, TRUE, "conditionalQuestionForRadioButtons")?>
+	</div>
+	
+	
+	<?php (isset($personal_information["has_other_names"]) && $personal_information["has_other_names"] != "No")? $class="" : $class="hide";?>
+	<div class="has_other_names <?php echo $class?>" data-answer="Yes">
+		<div>
+			<span class="clearfix">Former Last Name</span>
+			<input type="text" name="former_last_name" value="<?php echo isset($personal_information["former_last_name"]) ? $personal_information["former_last_name"] : "" ?>" />
+		</div>
+		<div>
+			<span class="clearfix">Preferred Name</span>
+			<input type="text" name="preferred_name" value="<?php echo isset($personal_information["preferred_name"]) ? $personal_information["preferred_name"] : "" ?>" />
+		</div>
+	</div>
+	
+	<div class="has_other_names <?php echo $class?>" data-answer="Others">
+		<div>
+			<span class="clearfix">Others</span>
+			<input type="text" name="test_others" value="<?php echo isset($personal_information["test_others"]) ? $personal_information["test_others"] : "" ?>" />
+		</div>
+	</div>
+	
+	
+	<div>
+		<span class="clearfix">Gender*</span>
+		<?php $values = array("Male", "Female", "Others")?>
+		<?php isset($personal_information["gender"]) ? $value = $personal_information["gender"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "gender", "Gender", $value)?>
+	</div>
+	<div>
+		<span class="clearfix">Birth Date*</span>
+		<input type="text" name="birth_date" value="<?php echo isset($personal_information["birth_date"]) ? $personal_information["birth_date"] : ""?>" />
+	</div>
+</div>

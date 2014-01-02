@@ -1,0 +1,169 @@
+<div class="sectionContainer" data-column="profile" data-section_name="demographics">
+	<div>
+		<b>Contact Details</b>
+	</div>
+	<div>
+		<span class="clearfix">Religous Preferences</span>
+		<?php $values = array("Catholic", "Anglican (Episcopal)", "Bahai", "Buddhist", "Caodaiist", "Chaeondist")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "religion", "Religion", isset($demographics["religion"]) ? $demographics["religion"] : "")?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Are you hispanic or Latino?*</span>
+		<?php $values = array("Yes", "No")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "hispanic_or_latino", "Select Preferred Phone", isset($demographics["hispanic_or_latino"]) ? $demographics["hispanic_or_latino"] : "")?>
+	</div>
+	
+	<div>
+		<span>Regardless of your answer to the prior question, please indicate how you identify yourself. (Select one or more)</span>
+		<div>
+			<input type="checkbox" class="conditionalQuestionForCheckbox" <?php echo (isset($demographics["american"]) && $demographics["american"]  != "" )? "checked" : ""; ?> value="American Indian Or Alaska Native" name="american" /><span>American Indian Or Alaska Native</span>
+		</div>
+		<div>
+			<input type="checkbox" class="conditionalQuestionForCheckbox" <?php echo (isset($demographics["asian"]) && $demographics["asian"]  != "" )? "checked" : ""; ?> value="Asian" name="asian" /><span>Asian</span>
+		</div>
+		<div>
+			<input type="checkbox" class="conditionalQuestionForCheckbox" <?php echo (isset($demographics["black"]) && $demographics["black"]  != "" )? "checked" : ""; ?>  value="Black of African American" name="black" /><span>Black of African American</span>
+		</div>
+		<div>
+			<input type="checkbox" class="conditionalQuestionForCheckbox" <?php echo (isset($demographics["islander"]) && $demographics["islander"]  != "" )? "checked" : ""; ?> value="Native Haiiwan or Other Pacific Islander" name="islander" /><span>Native Haiiwan or Other Pacific Islander</span>
+		</div>
+		<div>
+			<input type="checkbox" class="conditionalQuestionForCheckbox" <?php echo (isset($demographics["white"]) && $demographics["white"]  != "" )? "checked" : ""; ?> value="White" name="white" /><span>White</span>
+		</div>
+	</div>
+	
+
+	<!-- conditional divs for american -->
+	<?php (isset($demographics["american"]) && $demographics["american"] != "")? $class="" : $class="hide";?>
+	<div id="american" class="<?php echo $class?>">
+		<div>
+			<span class="clearfix">Whick best  describes your American Indian or Alaskan Native Background?</span>
+			<?php $values = array("American Indian or American Native" => "American Indian or American Native", 
+								  "Chippewa" => "Chippewa",
+								  "Choctaw"  => "Choctaw",
+								  "Cherokee" => "Cherokee",
+								  "Navajo"   => "Navajo",
+								  "Sioux" 	 => "Sioux",
+								  "Other"    => "Other"
+							)?>	
+			<?php isset($demographics["american_background"]) ? $value = $demographics["american_background"] : $value = "" ?>
+			<?php echo htmlRenderer::makeRadioButtons($values, "american_background", $value, FALSE, "conditionalQuestionForRadioButtons")?>
+		</div>
+		
+		<!-- conditional divs for others -->
+		<?php (isset($demographics["american_background"]) && $demographics["american_background"] == "Other")? $class="" : $class="hide";?>
+		<div class="american_background <?php echo $class?>" data-answer="Other">
+			<input type="text" name="american_background_other" value="<?php echo isset($demographics["american_background_other"]) ? $demographics["american_background_other"] : ""; ?>" />
+		</div>
+	</div>
+
+	
+	<!-- conditional divs for asian -->
+	<?php (isset($demographics["asian"]) && $demographics["asian"] != "")? $class="" : $class="hide";?>
+	<div id="asian" class="<?php echo $class?>">
+		<div>
+		<span class="clearfix">Whick best  describes your Asian Background?</span>
+		<?php $values = array("China" 						=> "China", 
+								  "India"				 	=> "India",
+								  "Japan"  					=> "Japan",
+								  "Korea" 					=> "Korea",
+								  "Pakistan"   				=> "Pakistan",
+								  "Vietnam" 	 			=> "Vietnam",
+								  "Other East Asia"    		=> "Other East Asia",
+								  "Other South Asia"    	=> "Other South Asia",
+								  "Other Southeast Asia"    => "Other Southeast Asia",
+							)?>	
+			<?php isset($demographics["asian_background"]) ? $value = $demographics["asian_background"] : $value = "" ?>
+			<?php echo htmlRenderer::makeRadioButtons($values, "asian_background", $value, FALSE, "conditionalQuestionForRadioButtons")?>
+		</div>
+		
+		<!-- conditional divs for other east asian background -->
+		<?php (isset($demographics["asian_background"]) && $demographics["asian_background"] == "Other East Asia")? $class="" : $class="hide";?>
+		<div class="asian_background <?php echo $class?>" data-answer="Other East Asia">
+			<span class="clearfix">Specify Other East Asian Background</span>
+			<input type="text" name="east_asian_other_background" value="<?php echo isset($demographics["east_asian_other_background"]) ? $demographics["east_asian_other_background"] : ""; ?>" />
+		</div>
+		
+		<!-- conditional divs for other south asian background -->
+		<?php (isset($demographics["asian_background"]) && $demographics["asian_background"] == "Other South Asia")? $class="" : $class="hide";?>
+		<div class="asian_background <?php echo $class?>" data-answer="Other South Asia" >
+			<span class="clearfix">Specify Other South Asian Background</span>
+			<input type="text" name="south_asian_other_background" value="<?php echo isset($demographics["south_asian_other_background"]) ? $demographics["south_asian_other_background"] : ""; ?>" />
+		</div>
+		
+		<!-- conditional divs for other south asian background -->
+		<?php (isset($demographics["asian_background"]) && $demographics["asian_background"] == "Other Southeast Asia")? $class="" : $class="hide";?>
+		<div class="asian_background <?php echo $class?>" data-answer="Other Southeast Asia">
+		<span class="clearfix">Specify Other Southeast Asian Background</span>
+			<input type="text" name="southeast_asian_other_background" value="<?php echo isset($demographics["southeast_asian_other_background"]) ? $demographics["southeast_asian_other_background"] : ""; ?>" />
+		</div>
+	</div>
+	
+	
+	<!-- conditional divs for black african -->
+	<?php (isset($demographics["black"]) && $demographics["black"] != "")? $class="" : $class="hide";?>
+	<div id="black" class="<?php echo $class?>">
+		<div>
+		<span class="clearfix">Whick best  describes your Black or African American Background?</span>
+		<?php $values = array("US African American" 		=> "US African American", 
+								  "Africa"				 	=> "Africa",
+								  "Carribean"  				=> "Carribean",
+								  "Other" 					=> "Other",
+							)?>	
+			<?php isset($demographics["black_background"]) ? $value = $demographics["black_background"] : $value = "" ?>
+			<?php echo htmlRenderer::makeRadioButtons($values, "black_background", $value, FALSE, "conditionalQuestionForRadioButtons")?>
+		</div>
+		
+		<!-- conditional divs for other american background -->
+		<?php (isset($demographics["black_background"]) && $demographics["black_background"] == "Other")? $class="" : $class="hide";?>
+		<div class="black_background <?php echo $class?>" data-answer="Other">
+			<span class="clearfix">Specify Other Black or African American Background</span>
+			<input type="text" name="other_black_background" value="<?php echo isset($demographics["other_black_background"]) ? $demographics["other_black_background"] : ""; ?>" />
+		</div>
+	</div>
+	
+	<!-- conditional divs for native hawaiian -->
+	<?php (isset($demographics["islander"]) && $demographics["islander"] != "")? $class="" : $class="hide";?>
+	<div id="islander" class="<?php echo $class?>">
+		<div>
+		<span class="clearfix">Whick best  describes your Native Hawaiian or Other Pacific Islander Background?</span>
+		<?php $values = array("Guam" 		=> "Guam", 
+								  "Hawaii"	=> "Hawaii",
+								  "Samoa"  	=> "Samoa",
+								  "Other Pacific Islands(Exluding Philippines)" => "Other",
+							)?>	
+			<?php isset($demographics["islander_background"]) ? $value = $demographics["islander_background"] : $value = "" ?>
+			<?php echo htmlRenderer::makeRadioButtons($values, "islander_background", $value, FALSE, "conditionalQuestionForRadioButtons")?>
+		</div>
+		
+		<!-- conditional divs for other islander background -->
+		<?php (isset($demographics["islander_background"]) && $demographics["islander_background"] == "Other")? $class="" : $class="hide";?>
+		<div class="islander_background <?php echo $class?>" data-answer="Other">
+			<span class="clearfix">Specify Other Black or African American Background</span>
+			<input type="text" name="other_islander_background" value="<?php echo isset($demographics["other_islander_background"]) ? $demographics["other_islander_background"] : ""; ?>" />
+		</div>
+	</div>
+	
+		<!-- conditional divs for White-->
+	<?php (isset($demographics["white"]) && $demographics["white"] != "")? $class="" : $class="hide";?>
+	<div id="white" class="<?php echo $class?>">
+		<div>
+		<span class="clearfix">Whick best  describes your White Background?</span>
+ 		<?php $values = array("Europe" 		 => "Europe", 
+							   "Middle East" => "Middle East",
+							   "Other"  	 => "Other"
+							)?>	
+ 			<?php isset($demographics["white_background"]) ? $value = $demographics["white_background"] : $value = "" ?>
+			<?php echo htmlRenderer::makeRadioButtons($values, "white_background", $value, FALSE, "conditionalQuestionForRadioButtons")?>
+		</div>
+		
+		<!-- conditional divs for other islander background -->
+		<?php (isset($demographics["white_background"]) && $demographics["white_background"] == "Other")? $class="" : $class="hide";?>
+		<div class="white_background <?php echo $class?>" data-answer="Other">
+			<span class="clearfix">Specify Other White Background</span>
+			<input type="text" name="other_white_background" value="<?php echo isset($demographics["other_white_background"]) ? $demographics["other_white_background"] : ""; ?>" />
+		</div>
+	</div>
+	
+</div>

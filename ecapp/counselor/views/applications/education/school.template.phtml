@@ -1,0 +1,98 @@
+<div class="sectionContainer" data-column="education" data-section_name="school">
+	<div>
+		<b>School</b>
+	</div>
+
+	<div>
+		<span class="clearfix">High Shool Name*</span>
+		<input type="text" name="high_school"  value="<?php echo isset($school["high_school"]) ? $school["high_school"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Country*</span>
+		<?php $values = array("Philippies", "United States", "Italy", "Spain")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "country", "Select Country", isset($school["country"]) ? $school["country"] : "")?>
+	</div>
+
+	<div>
+		<span class="clearfix">School Type*</span>
+		<?php $values = array("Charter", "Public", "Religous", "Home School", "Independent")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "school_type", "Select School Type", isset($school["school_type"]) ? $school["school_type"] : "")?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Address Line 1*</span>
+		<input type="text" name="address_line_1"  value="<?php echo isset($school["address_line_1"]) ? $school["address_line_1"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Address Line 2</span>
+		<input type="text" name="address_line_2"  value="<?php echo isset($school["address_line_2"]) ? $school["address_line_2"] : ""; ?>" />
+	</div>
+
+	<div>
+		<span class="clearfix">City</span>
+		<input type="text" name="city"  value="<?php echo isset($school["city"]) ? $school["city"] : ""; ?>" />
+	</div>
+
+	<div>
+		<span class="clearfix">State or Province</span>
+		<input type="text" name="state_or_province"  value="<?php echo isset($school["state_or_province"]) ? $school["state_or_province"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Postal Code</span>
+		<input type="text" name="postal_code"  value="<?php echo isset($school["postal_code"]) ? $school["postal_code"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Date Of Entry*</span>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "date_of_entry_months", "Select Months", isset($school["date_of_entry_months"]) ? $school["date_of_entry_months"] : "")?>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "date_of_entry_years", "YYYY", isset($school["date_of_entry_years"]) ? $school["date_of_entry_years"] : "")?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Is this a boarding school?*</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($school["is_boarding_school"]) ? $value = $school["is_boarding_school"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "is_boarding_school", $value)?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Graduation Date*</span>
+		<?php 
+			$values = array(
+				"months"	 => isset($school["graduation_date_months"])? $school["graduation_date_months"] : "",
+				"days"  	 => isset($school["graduation_date_days"])? $school["graduation_date_days"] : "",
+				"years"  	 => isset($school["graduation_date_years"])? $school["graduation_date_years"] : "",
+			);
+			echo htmlRenderer::makeDatePicker($values, "graduation_date");
+		?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Select Prefix*</span>
+		<?php $values = array("Ms.", "Dr.", "Mrs.", "Mr.")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "prefix", "Select prefix", isset($school["prefix"]) ? $school["prefix"] : "")?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's First Name</span>
+		<input type="text" name="counselor_first_name"  value="<?php echo isset($school["counselor_first_name"]) ? $school["counselor_first_name"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's Middle Name</span>
+		<input type="text" name="counselor_middle_name"  value="<?php echo isset($school["counselor_middle_name"]) ? $school["counselor_middle_name"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's Last Name</span>
+		<input type="text" name="counselor_last_name"  value="<?php echo isset($school["counselor_last_name"]) ? $school["counselor_last_name"] : ""; ?>" />
+	</div>
+
+	<div>
+		<span class="clearfix">Counselor's Phone Number</span>
+		<input type="text" name="counselor_phone_number"  value="<?php echo isset($school["counselor_phone_number"]) ? $school["counselor_phone_number"] : ""; ?>" />
+	</div>
+</div>

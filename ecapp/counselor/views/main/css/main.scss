@@ -1,20 +1,98 @@
-<<<<<<< HEAD
-@import 'C:/WORKSPACE/spine/website/views/main/scss/core/global';
-@CHARSET "ISO-8859-1";
-.main {
-  margin:auto;
-}
-
-.content {
-  padding-left: 2%; 
-}
-=======
 @import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/global';
 @CHARSET "ISO-8859-1";
 
+body{
+  background-color:$dirtyWhite;
+}
 .container{
   max-width:none!important;
   width:1170px;
   margin:0 auto;
 }
->>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
+
+
+
+// **calendar overrides
+.fc-header-title{
+  >h2{
+    font:{
+      size:2.8em;
+      weight:400;
+    }
+    &:before{
+      content:'';
+      margin-right:5px;
+      @include sprite(20px,24px,-1px,-27px,'no-hover',$sprite);
+    }
+  }
+}
+.fc-state-default{
+  color:$white;
+}
+.fc-state-active{
+  background-color:$activeRed!important;
+}
+.fc-text-arrow{
+  font-size:0!important;
+}
+.fc-button-prev{
+  width:30px;
+  height:30px!important;
+  background-color:$darkGray;
+  &:before{
+    content:'';
+    margin-top: 8px;
+    @include sprite(15px,17px,-22px,-32px,'no-hover',$sprite);
+  }
+}
+.fc-button-next{
+  width:30px;
+  height:30px!important;
+  &:before{
+    content:'';
+    margin-top: 8px;
+    @include sprite(15px,17px,-36px,-32px,'no-hover',$sprite);
+  }
+  background-color:$darkGray;
+}
+.fc-button-month,.fc-button-agendaWeek,.fc-button-agendaDay{
+  background-color:$red;
+  font-size:1.3em;
+  text-transform:capitalize;
+}
+.fc-button-today{
+  background-color:$darkGray;
+  font-size:1.3em;
+  text-transform:capitalize;
+}
+
+// ********************COMMON TO ALL PAGES*******************
+ul.tabs{
+  li{
+    list-style:none;
+    float:left;
+  }
+}
+
+// **********************move to user css*********************
+#loginContainer{
+  width:230px;
+  margin:0 auto;
+  min-height:500px;
+  padding-top:90px;
+  input[type="text"],input[type="password"]{
+    width:100%;
+    height: 30px;
+    border-radius:0;
+    font-size:1.5em;
+    padding: 7px 5px;
+  }
+  input[type="submit"]{
+    width:100%;
+    height:45px;
+    background-color:$red;
+    border-radius:0;
+    font-size:2.1em;
+    color:$white;
+  }
+}

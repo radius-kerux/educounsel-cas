@@ -1,7 +1,14 @@
-<div>
-	<form action="/user/save-profile" method="POST">
-		<img src="data:image/jpg;JPEG;gif;png;base64,<?=$user_data['photo']?>"><br/>
+<div id="edit_profile">
+	<form action="/user/save-profile" method="POST" enctype="multipart/form-data">
+		<img src="<?=$user_data['photo']?>" id="profile_photo"><br/>
+		<input type="file" name="photo" id="photo"/><br/>
 		<span><label for="username">Username</label><input type="text" name="username" id="username" value="<?=$user_data['username']?>" /></span><br/>
+		<span><a href="#" class="change_password">Change password</a></span><br/>
+		<div class="hide change_password">
+			<span><label for="old_password">Old Password</label><input type="password" name="old_password" id="old_password" value="" class="change_password" disabled/></span><span id="verify_old_password_status"></span><br/>
+			<span><label for="password">New Password</label><input type="password" name="password" id="password" value="" class="change_password" disabled/></span><span id="confirm_password_status"></span><br/>
+			<span><label for="confirm_password">Confirm New Password</label><input type="password" name="confirm_password" id="confirm_password" class="change_password" disabled/></span><br/>
+		</div>
 		<span><label for="firstname">firstname</label><input type="text" name="firstname" id="firstname" value="<?=ucwords($user_data['firstname'])?>" /></span><br/>
 		<span><label for="lastname">lastname</label><input type="text" name="lastname" id="lastname" value="<?=ucwords($user_data['lastname'])?>" /></span><br/>
 		<span><label for="email_address">lastname</label><input type="text" name="email_address" id="email_address" value="<?=$user_data['email_address']?>" /></span><br/>

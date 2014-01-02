@@ -1,56 +1,109 @@
-<<<<<<< HEAD
-@import 'C:/WORKSPACE/spine/website/views/main/scss/core/global';
-
-@CHARSET "ISO-8859-1";
-.header {
-  padding-top:5%; 
-}
-.navbar{  
-  margin: auto;
-=======
 @import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/global';
 @CHARSET "ISO-8859-1";
 .header{
   .upperHeader{
     .accountPanel{
       .profileImage{
-        @include fitImage(37px,38px);
+        @include fitImage(81px,81px);
       }
-      p,a{
-        margin:0;
-        line-height:13.5px;
-        display:block;
-        color:$gray;
-        font:{
-          family:'century-gothicb';
-          size:1.0em;
+      #accountDetails,.accountMenu{
+      width:189px;
+      background-color:$darkGray;
+        p,a{
+          margin:0;
+          display:inline-block;
+          color:$white;
+          font:{
+            size:1.5em;
+          }
+        }
+        .showMore{
+          font-size:0;
+          margin:7px 17px;
+          @include sprite(11px,11px,-3px,-51px,'no-hover',$sprite);
+        }
+        .accountMenu{
+          z-index:9;
+          right: 15px;
+          padding-left:15px;
+          background-color:$midGray;
+          line-height: 27px;
         }
       }
     }
   }
   .navbar{
     margin: auto;
+    background-color:$red;
     ul.nav{
       padding:0!important;
+      margin:0;
       li{
-        background-color:$lightGray;
+        background-color:$red;
+        border-right:1px solid $white;
         a{
-          padding: 10px 64px 10px!important;
+          padding: 10px 39.75px 10px!important;
           color:$white;
-          letter-spacing: 1px;
           font:{
-            family:'century-gothicb';
-            size:1.0em;
+            size:1.5em;
+          }
+          // ----------------------navigation icons-------------------
+          &#dashboard{
+             &:before{
+              content:'';
+              @include sprite(16px,21px,-3px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
+          }
+          &#applications{
+             &:before{
+              content:'';
+              @include sprite(16px,21px,-20px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
+          }
+          &#colleges{
+             &:before{
+              content:'';
+              @include sprite(19px,21px,-39px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
+          }
+          &#sat{
+             &:before{
+              content:'';
+              @include sprite(16px,21px,-59px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
+          }
+          &#activities{
+             &:before{
+              content:'';
+              @include sprite(18px,21px,-75px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
+          }
+          &#visa{
+             &:before{
+              content:'';
+              @include sprite(18px,21px,-96px,-1px,'no-hover',$sprite);
+              margin-right:5px;
+            }
           }
         }
         &.active{
-          background-color:$gray!important;
+          background-color:$activeRed!important;
           a{
-            background-color:$gray!important;
+            background-color:$activeRed!important;
+            &:hover{
+              color:$white;
+            }
           }
+        }
+        &:last-child{
+          border-right:0;
         }
       }
     }
   }
->>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
 }

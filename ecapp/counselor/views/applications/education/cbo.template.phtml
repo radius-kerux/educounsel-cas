@@ -1,0 +1,73 @@
+<div class="sectionContainer" data-column="education" data-section_name="cbo">
+	<div>
+		<b>CBO</b>
+	</div>
+
+	<div>
+		<span class="clearfix">Indicate the number of community programs or organizations that have provided you with free assistance in your application proccess.*</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_organization", "How many organization?", isset($cbo["number_of_organization"]) ? $cbo["number_of_organization"] : "", "selectCounter")?>
+	</div>
+	
+	<div id="number_of_organization">
+	<?php (isset($cbo["number_of_organization"]))? $counter = $cbo["number_of_organization"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_organization_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+		<div>
+			<?php $values = array(
+					"One Voice", 
+					"OPTION Center for Education", 
+					"Philadelphia Futures", 
+					"POSSE", 
+					"Other", 
+				);
+			?>
+			<?php echo htmlRenderer::makeSelectInput($values, "organization_name$i", "Organization Name", isset($cbo["organization_name$i"]) ? $cbo["organization_name$i"] : "", "conditionalQuestionForSelect")?>
+		
+			<!-- conditional divs for others -->
+			<?php (isset($cbo["organization_name$i"]) && $cbo["organization_name$i"] == "Other")? $class="" : $class="hide";?>
+			<div class="organization_name<?php echo $i?> <?php echo $class?>" data-answer="Other">
+				<span class="clearfix">Please Specify Organization</span>
+				<input type="text" name="organization_name<?php echo $i?>_other" value="<?php echo isset($cbo["organization_name{$i}_other"]) ? $cbo["organization_name{$i}_other"] : ""; ?>" />
+			</div>
+		</div>
+		
+		
+	</div>
+	<?php endfor?>
+	</div>	
+	
+	<div>
+		<span class="clearfix">Counselor's Prefix</span>
+		<?php $values = array("Mr.", "Mrs.", "Ms.", "Dr.");?>
+		<?php echo htmlRenderer::makeSelectInput($values, "counselor_prefix", "Select prefix", isset($cbo["counselor_prefix"]) ? $cbo["counselor_prefix"] : "")?>
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's First Name</span>
+		<input type="text" name="counselor_first_name"  value="<?php echo isset($cbo["counselor_first_name"]) ? $cbo["counselor_first_name"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's Middle Name</span>
+		<input type="text" name="counselor_middle_name"  value="<?php echo isset($cbo["counselor_middle_name"]) ? $cbo["counselor_middle_name"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Counselor's Last Name</span>
+		<input type="text" name="counselor_last_name"  value="<?php echo isset($cbo["counselor_last_name"]) ? $cbo["counselor_last_name"] : ""; ?>" />
+	</div>
+
+	<div>
+		<span class="clearfix">Counselor's Email</span>
+		<input type="text" name="counselor_email"  value="<?php echo isset($cbo["counselor_email"]) ? $cbo["counselor_email"] : ""; ?>" />
+	</div>
+
+	<div>
+		<span class="clearfix">Counselor's Phone Number</span>
+		<input type="text" name="counselor_phone_number"  value="<?php echo isset($cbo["counselor_phone_number"]) ? $cbo["counselor_phone_number"] : ""; ?>" />
+	</div>
+	
+	
+</div>

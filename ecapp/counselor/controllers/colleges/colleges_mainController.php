@@ -13,6 +13,8 @@ class colleges_mainController extends Spine_SuperController implements Spine_Mai
 	
 	public function main()
 	{
+		$this->includeInPageScript('local_top_script', '/colleges/js/inpage_colleges_script.js');
+		$this->includeInPageScript('local_top_script', '/colleges/js/lavenshtein_distance.js');
 	}
 	
 	//------------------------------------------------------------------------------------

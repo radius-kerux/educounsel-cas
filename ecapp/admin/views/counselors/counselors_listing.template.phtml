@@ -1,0 +1,25 @@
+<h1>EduCounselor's Profile</h1>
+<a href="/admin/counselors/add">Add Educounselor</a>
+<div>
+	<div>
+		<?php foreach (range('A', 'Z') as $char) : ?>
+			<span><strong><?php echo $char; ?></strong></span>
+		<?php endforeach; ?>
+		<input type="text" name="search_counselor" placeholder="Search by Last Name, First Name, Account Number" />
+	</div>
+	<div id="counselorsListing">
+		<?php foreach (range('A', 'Z') as $char) : ?>
+		<div>
+			<h3><?php echo $char; ?></h3>
+			<ul style="list-style: none;">
+				<?php foreach ($counselors as $counselor) : ?>
+					<?php $counselor_name = ucwords($counselor->counselor_name); ?>
+					<?php if($counselor_name[0] == $char) : ?>
+						<li><a href="/counselors/edit/counselor/<?php echo $counselor->user_id; ?>"><?php echo $counselor_name; ?></a></li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</div>

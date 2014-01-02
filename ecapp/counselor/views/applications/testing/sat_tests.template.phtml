@@ -1,0 +1,59 @@
+<div class="sectionContainer" data-column="testing" data-section_name="sat_tests">
+	<div>
+		<b>SAT Tests</b>
+	</div>
+	
+	<div>
+		<span class="clearfix">Number of times  you have taken the SAT*?</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_sat", "", isset($sat_tests["number_of_sat"]) ? $sat_tests["number_of_sat"] : "", "selectCounter conditionalQuestionForSelect")?>
+	</div>
+	
+	<!-- conditional divs for 0 -->
+	<?php (isset($sat_tests["number_of_sat"]) && $sat_tests["number_of_sat"] == "0")? $class="" : $class="hide";?>
+	<div class="number_of_sat <?php echo $class?>" data-answer="0">
+		<span class="clearfix">Future Testing Date</span>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "testing_date_months", "Select Months", isset($sat_tests["testing_date_months"]) ? $sat_tests["testing_date_months"] : "")?>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "testing_date_years", "YYYY", isset($sat_tests["testing_date_years"]) ? $sat_tests["testing_date_years"] : "")?>
+	</div>
+	
+	<div id="number_of_sat">
+	<?php (isset($sat_tests["number_of_sat"]))? $counter = $sat_tests["number_of_sat"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_sat_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+		<div>
+			<span class="clearfix">Highest critical score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_critical_score$i", "", isset($sat_tests["highest_critical_score$i"]) ? $sat_tests["highest_critical_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Critial Reading Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "critical_date_months$i", "Select Months", isset($sat_tests["critical_date_months$i"]) ? $sat_tests["critical_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "critical_date_days$i", "dd", isset($sat_tests["critical_date_days$i"]) ? $sat_tests["critical_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "critical_date_years$i", "YYYY", isset($sat_tests["critical_date_years$i"]) ? $sat_tests["critical_date_years$i"] : "")?>
+		</div>
+		
+		<div>
+			<span class="clearfix">Highest match score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_match_score$i", "", isset($sat_tests["highest_match_score$i"]) ? $sat_tests["highest_match_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">match Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "match_date_months$i", "Select Months", isset($sat_tests["match_date_months$i"]) ? $sat_tests["match_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "match_date_days$i", "dd", isset($sat_tests["match_date_days$i"]) ? $sat_tests["match_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "match_date_years$i", "YYYY", isset($sat_tests["match_date_years$i"]) ? $sat_tests["match_date_years$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Highest writing score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_writing_score$i", "", isset($sat_tests["highest_writing_score$i"]) ? $sat_tests["highest_writing_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">writing Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "writing_date_months$i", "Select Months", isset($sat_tests["writing_date_months$i"]) ? $sat_tests["writing_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "writing_date_days$i", "dd", isset($sat_tests["writing_date_days$i"]) ? $sat_tests["writing_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "writing_date_years$i", "YYYY", isset($sat_tests["writing_date_years$i"]) ? $sat_tests["writing_date_years$i"] : "")?>
+		</div>
+	</div>
+	<?php endfor?>
+	</div>	
+</div>

@@ -1,0 +1,35 @@
+<div class="sectionContainer" data-column="profile" data-section_name="address">
+	<div>
+		<b>Address</b>
+	</div>
+	<div>
+		<span class="clearfix">Country*</span>
+		<?php $values = array("Philippines", "US", "Japan", "II", "III")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "country", "Country", isset($address["country"]) ? $address["country"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">Address Line 1*</span>
+		<input type="text" name="address_line_1" value="<?php echo isset($address["address_line_1"]) ? $address["address_line_1"] : "";?>" />
+	</div>
+	<div>
+		<span class="clearfix">Address Line 2*</span>
+		<input type="text" name="address_line_2" value="<?php echo isset($address["address_line_2"]) ? $address["address_line_2"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">City or Town*</span>
+		<input type="text" name="city_or_town" value="<?php echo isset($address["city_or_town"]) ? $address["city_or_town"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">State or Province*</span>
+		<input type="text" name="state_or_province" value="<?php echo isset($address["state_or_province"]) ? $address["state_or_province"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Postal Code*</span>
+		<input type="text" name="postal_code" value="<?php echo isset($address["postal_code"]) ? $address["postal_code"] : ""; ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Alternate Mailing Address*</span>
+		<?php $values = array("Alternate Mailing Address 1", "Alternate Mailing Address 1")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "alternate_mailing_address", "Alternate", isset($address["alternate_mailing_address"]) ? $address["alternate_mailing_address"] : "")?>
+	</div>
+</div>

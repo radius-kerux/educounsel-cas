@@ -1,0 +1,28 @@
+<div class="sectionContainer" data-column="profile" data-section_name="citizenship">
+	<div>
+		<b>Citizenship</b>
+	</div>
+	<div>
+		<span class="clearfix">Select your citizenship status*</span>
+		<?php $values = array("US Citizen of US National", "US Dual Citizen", "US Permanent Residence of Refugee", "Other(Non - US)")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "citizenship_status", "Select Citizenship", isset($citizenship["citizenship_status"]) ? $citizenship["citizenship_status"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">List of Citizenship*</span>
+		<input type="text" name="list_of_citizenship" value="<?php echo isset($citizenship["list_of_citizenship"]) ? $citizenship["list_of_citizenship"] : "" ?>" />
+	</div>
+	<div>
+		<span class="clearfix">Currently held United States Visa *</span>
+		<?php $values = array("I do not hold a currently valid US non-immigrant",
+							   "A-1 Foreign Diplomatic Personnel", 
+		                       "A-2 Dependent Foreign Diplomatic Personnel", 
+							   "A-3 Employee of Foreign Government Office",
+							   "Asylee",                   
+							   "B-2 Tourist",                   
+							   "E-2 Dependent of Treaty Investor",
+							   "F-1 Student Visa",
+							   "US Permanent Resident or Refugee",
+							)?>
+		<?php echo htmlRenderer::makeSelectInput($values, "us_held_visa", "Select Held Visa", isset($citizenship["us_held_visa"]) ? $citizenship["us_held_visa"] : "")?>
+	</div>
+</div>

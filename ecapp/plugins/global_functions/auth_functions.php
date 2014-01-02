@@ -7,10 +7,10 @@ function checkAuth($allow_redirect	=	TRUE)
 
 //------------------------------------------------------------------------------------
 
-function verifyAuthCredentials()
+function verifyAuthCredentials() //modify this
 {
-	$role		=	Spine_SessionRegistry::getSession('auth', 'role');
-	$user_id	=	isset($_GET['id'])?$_GET['id']:0;
+	$role		=	Spine_SessionRegistry::getSession('auth', 'role_id');
+	$user_id	=	Spine_SessionRegistry::getSession('auth', 'user_id');
 		
 	if ( !Auth::getInstance()->verifyCredentials(array( 'user_id'	=>	$user_id)) && $role >= 3)
 		header ( 'location: /user/logout' );
@@ -49,3 +49,4 @@ function flushAuth()
 	auth::getInstance()->flush('user/login');
 }
 
+//------------------------------------------------------------------------------------

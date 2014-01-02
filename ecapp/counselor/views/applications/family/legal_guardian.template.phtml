@@ -1,0 +1,46 @@
+<div class="sectionContainer" data-column="family" data-section_name="legal_guardian">
+	<div>
+		<b>Legal Guardian</b>
+	</div>
+	<div>
+		<span class="clearfix">Prefix*</span>
+		<?php $values = array("Mr.", "Ms.", "Mrs.", "Dr.")?>
+		<?php isset($legal_guardian["prefix"]) ? $value = $legal_guardian["prefix"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "prefix", "Select Prefix", $value)?>
+	</div>
+	
+	<div>
+		<span class="clearfix">First/Given Name*</span>
+		<input type="text" name="first_name" value="<?php echo isset($legal_guardian["first_name"]) ? $legal_guardian["first_name"] : "" ?>" />
+	</div>
+		
+	<div>
+		<span class="clearfix">Middle Initial*</span>
+		<input type="text" name="middle_initial" value="<?php echo isset($legal_guardian["middle_initial"]) ? $legal_guardian["middle_initial"] : "" ?>" />
+	</div>
+		
+	<div>
+		<span class="clearfix">Last Name*</span>
+		<input type="text" name="last_name" value="<?php echo isset($legal_guardian["last_name"]) ? $legal_guardian["last_name"] : "" ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Suffix</span>
+		<?php $values = array("Jr.", "Sr.", "I", "II", "III")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "suffix", "Suffix", isset($legal_guardian["suffix"]) ? $legal_guardian["suffix"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">Relationship to You*</span>
+		<input type="text" name="relationship" value="<?php echo isset($legal_guardian["relationship"]) ? $legal_guardian["relationship"] : "" ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Preferred Email*</span>
+		<input type="text" name="preferred_email" value="<?php echo isset($legal_guardian["preferred_email"]) ? $legal_guardian["preferred_email"] : "" ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Preferred Phone Number*</span>
+		<input type="text" name="preferred_number" value="<?php echo isset($legal_guardian["preferred_number"]) ? $legal_guardian["preferred_number"] : "" ?>" />
+	</div>
+</div>

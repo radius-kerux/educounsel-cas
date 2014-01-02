@@ -1,0 +1,37 @@
+<div class="sectionContainer" data-column="education" data-section_name="future_plans">
+	<div>
+		<b>Future Plans</b>
+	</div>
+
+	<div>
+		<span class="clearfix">How many honors would you like to report?</span>
+		<?php $values = array("Arts Visual(Studio Arts)",
+							  "Biological and biomedical Sciences",
+							  "Biology",
+							  "Business",
+							  "Chemistry",
+							  "Communications",
+							  "Computer and Information Sciences"
+		)?>
+		
+		<?php echo htmlRenderer::makeSelectInput($values, "career_interest", "", isset($future_plans["career_interest"]) ? $future_plans["career_interest"] : "")?>
+	</div>
+	
+	
+	<div>
+		<span class="clearfix">Highest degree you intend to earn*</span>
+		<?php $values = array("Bachelors",
+							  "Masters (excluding MBA)",
+							  "MBA",
+							  "JD (Law)",
+							  "MD / DO / DVM / DDS (Medicine)",
+							  "PhD (Doctorate)",
+							  "Others",
+							  "Undecided",
+							  "Non-degree"
+		)?>
+		
+		<?php echo htmlRenderer::makeSelectInput($values, "highest_degree", "", isset($future_plans["highest_degree"]) ? $future_plans["highest_degree"] : "")?>
+	</div>
+	
+</div>

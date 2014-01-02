@@ -1,0 +1,36 @@
+<div class="sectionContainer" data-column="education" data-section_name="education_interruption">
+	<div>
+		<b>Education Interruption</b>
+	</div>
+	<div>
+		<span class="clearfix">Please indicate if your progression through secodary school was was or will be delayed or interrupted in any way. Check all that apply*</span>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["graduate_early"]) && $education_interruption["graduate_early"]  != "" )? "checked" : ""; ?> value="Did or not will graduate" name="graduate_early" />
+			<span>Did or not will graduate</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["graduate_late"]) && $education_interruption["graduate_late"]  != "" )? "checked" : ""; ?> value="Did or graduate early" name="graduate_late" />
+			<span>Did or not will graduate</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["change_school"]) && $education_interruption["change_school"]  != "" )? "checked" : ""; ?> value="Did or change secondary school" name="change_school" />
+			<span>Did or change secondary school</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["take_time"]) && $education_interruption["take_time"]  != "" )? "checked" : ""; ?> value="Did or will take time off" name="take_time" />
+			<span>Did or will take time off</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["gap_year"]) && $education_interruption["gap_year"]  != "" )? "checked" : ""; ?> value="Did or will take gap year" name="gap_year" />
+			<span>Did or will take gap year</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["received_ged"]) && $education_interruption["received_ged"]  != "" )? "checked" : ""; ?> value="Did or will received GED" name="received_ged" />
+			<span>Did or will received GED</span>
+		</div>
+		<div>
+			<input type="checkbox"  <?php echo (isset($education_interruption["no_interruption"]) && $education_interruption["no_interruption"]  != "" )? "checked" : ""; ?> value="Did or no interruption" name="no_interruption" />
+			<span>Did or will no interruption</span>
+		</div>
+	</div>
+</div>

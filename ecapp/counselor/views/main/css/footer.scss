@@ -1,11 +1,12 @@
-<<<<<<< HEAD
-@import 'C:/WORKSPACE/spine/website/views/main/scss/core/global';
-=======
 @import 'C:/WORKSPACE/educounsel-cas/ecapp/counselor/views/main/scss/core/global';
->>>>>>> 36674d51096fbc2b7cc969b076a74bab18fb88a3
 @CHARSET "ISO-8859-1";
 
 .footer {
-  padding-top: 5%;
-  padding-bottom: 5%;
+  color:$white;
+  >div{
+  }
+  p{
+    background-color:$red;
+    margin:0;
+  }
 }

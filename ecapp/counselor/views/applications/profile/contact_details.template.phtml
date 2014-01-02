@@ -1,0 +1,28 @@
+<div class="sectionContainer" data-column="profile" data-section_name="contact_details">
+	<div>
+		<b>Contact Details</b>
+	</div>
+	<div>
+		<span class="clearfix">Email Address*</span>
+		<input type="text" name="email" value="<?php echo isset($contact_details["email"]) ? $contact_details["email"] : "";?>" />
+	</div>
+	<div>
+		<span class="clearfix">Preferred Phone*</span>
+		<?php $values = array("Home", "Mobile")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "preferred_phone1", "Select Preferred Phone", isset($contact_details["preferred_phone1"]) ? $contact_details["preferred_phone1"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">Number</span>
+		<input type="text" name="contact_number1" value="<?php echo isset($contact_details["contact_number1"]) ? $contact_details["contact_number1"] : "";?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Preferred Phone*</span>
+		<?php $values = array("Home", "Mobile")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "preferred_phone2", "Select Preferred Phone", isset($contact_details["preferred_phone2"]) ? $contact_details["preferred_phone2"] : "")?>
+	</div>
+	<div>
+		<span class="clearfix">Number</span>
+		<input type="text" name="contact_number2" value="<?php echo isset($contact_details["contact_number2"]) ? $contact_details["contact_number2"] : "";?>" />
+	</div>
+</div>

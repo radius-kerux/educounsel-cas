@@ -1,21 +1,23 @@
-<div class="row header clearfix">
-	<div class="upperHeader pAs">
-		<a class="brand" title="Educounsel" href="/"><img src="/counselor/views/main/images/logo/educaounsel-logo.png" alt="Educounsel"/></a>
+<div class="header container clearfix">
+	<div class="upperHeader row clearfix">
+		<div class="col-xs-3">
+			<a class="brand" title="Educounsel" href="/"><img src="/counselor/views/main/images/logo/logo.svg" alt="Educounsel"/></a>
+		</div>
 		<?php if (checkAuth(FALSE)):?>
-		<div class="col-xs-2 fright">
+		<div class="col-xs-3 col-xs-offset-6">
 			<?php $this->displayBlock('user_profile/user_profile', 'displayUserProfile');?>
 		</div>
 		<?endif;?>
 	</div>
-	<div class="navbar col-xs-12">
+	<div class="navbar row">
 		<div class="navbar container">
 			<ul class="nav">
-				<li class="<?php $this->isActive('dashboard'); //param is controller name?>"><a href="/dashboard">Dashboard</a></li>
-				<li class="<?php $this->isActive('applications');?>"><a href="/applications">Applications</a></li>
-				<li class="<?php $this->isActive('activities');?>"><a href="/activities">Activities</a></li>
-				<li class="<?php $this->isActive('colleges');?>"><a href="/colleges">Colleges List</a></li>
-				<li class="<?php $this->isActive('sat');?>"><a href="/sat-centers">SAT Centers</a></li>
-				<li class="<?php $this->isActive('visa');?>"><a href="/student-visa">Student Visa</a></li>
+				<li class="<?php $this->isActive('dashboard'); //param is controller name?>"><a id="dashboard" href="/dashboard">Dashboard</a></li>
+				<li class="<?php $this->isActive('applications');?>"><a id="applications" href="/applications">Process Applications</a></li>
+				<li class="<?php $this->isActive('colleges');?>"><a id="colleges" href="/colleges">Colleges and Universities</a></li>
+				<li class="<?php $this->isActive('sat');?>"><a id="sat" href="/sat-centers">SAT</a></li>
+				<li class="<?php $this->isActive('activities');?>"><a id="activities" href="/activities">Activities</a></li>
+				<li class="<?php $this->isActive('visa');?>"><a id="visa" href="/student-visa">Student Visa</a></li>
 			</ul>
 		</div>
 	</div>

@@ -19,7 +19,6 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	public function main()
 	{
 		$this->loadClasses();
-		
 		doAuth(); //a function inside plugins/global_functions/auth_functions.php
 		
 		//displayPhtml gets the contents of the specified Phtml file				
@@ -67,7 +66,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getGlobalScripts()
+	private function getGlobalScripts()
 	{
 		//includeExternalScript gets the specified scripts so SPINE can compile them as an external script
 		//The first parameter is the section in which this scripts will be included
@@ -79,7 +78,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getProjectStylesheets()
+	private function getProjectStylesheets()
 	{
 		//includeStyleSheet gets the specified style sheets so SPINE can compile them as an external stylesheet
 		//The first parameter is the section in which this stylesheet will be included
@@ -95,7 +94,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getLocalScripts()
+	private function getLocalScripts()
 	{
 		//includeInPageScript gets the specified local script so SPINE can put them in place of the specified section as an inpage script
 		$this->includeInPageScript('local_top_script','main/js/local_top_script.js');

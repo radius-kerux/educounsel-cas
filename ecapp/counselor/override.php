@@ -19,9 +19,7 @@ class override extends Spine_OverrideAbstract
 			'parameters'	=>	array(
 				'name'		=>	'Your Name',
 				'message'	=>	'Your message'
-			),
-
-			'exit'			=>	TRUE	
+			)
 		)
 	);
 

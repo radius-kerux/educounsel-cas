@@ -1,0 +1,59 @@
+<div class="sectionContainer" data-column="testing" data-section_name="pte_academic_tests">
+	<div>
+		<b>pte Tests</b>
+	</div>
+	
+	<div>
+		<span class="clearfix">Number of times  you have taken the pte*?</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_pte", "", isset($pte_academic_tests["number_of_pte"]) ? $pte_academic_tests["number_of_pte"] : "", "selectCounter conditionalQuestionForSelect")?>
+	</div>
+	
+	<!-- conditional divs for 0 -->
+	<?php (isset($pte_academic_tests["number_of_pte"]) && $pte_academic_tests["number_of_pte"] == "0")? $class="" : $class="hide";?>
+	<div class="number_of_pte <?php echo $class?>" data-answer="0">
+		<span class="clearfix">Future Testing Date</span>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "testing_date_months", "Select Months", isset($pte_academic_tests["testing_date_months"]) ? $pte_academic_tests["testing_date_months"] : "")?>
+		<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "testing_date_years", "YYYY", isset($pte_academic_tests["testing_date_years"]) ? $pte_academic_tests["testing_date_years"] : "")?>
+	</div>
+	
+	<div id="number_of_pte">
+	<?php (isset($pte_academic_tests["number_of_pte"]))? $counter = $pte_academic_tests["number_of_pte"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_pte_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+		<div>
+			<span class="clearfix">Highest critical score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_critical_score$i", "", isset($pte_academic_tests["highest_critical_score$i"]) ? $pte_academic_tests["highest_critical_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Critial Reading Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "critical_date_months$i", "Select Months", isset($pte_academic_tests["critical_date_months$i"]) ? $pte_academic_tests["critical_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "critical_date_days$i", "dd", isset($pte_academic_tests["critical_date_days$i"]) ? $pte_academic_tests["critical_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "critical_date_years$i", "YYYY", isset($pte_academic_tests["critical_date_years$i"]) ? $pte_academic_tests["critical_date_years$i"] : "")?>
+		</div>
+		
+		<div>
+			<span class="clearfix">Highest match score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_match_score$i", "", isset($pte_academic_tests["highest_match_score$i"]) ? $pte_academic_tests["highest_match_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">match Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "match_date_months$i", "Select Months", isset($pte_academic_tests["match_date_months$i"]) ? $pte_academic_tests["match_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "match_date_days$i", "dd", isset($pte_academic_tests["match_date_days$i"]) ? $pte_academic_tests["match_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "match_date_years$i", "YYYY", isset($pte_academic_tests["match_date_years$i"]) ? $pte_academic_tests["match_date_years$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Highest writing score?*</span>
+			<?php echo htmlRenderer::makeSelectInput(range(30, 50), "highest_writing_score$i", "", isset($pte_academic_tests["highest_writing_score$i"]) ? $pte_academic_tests["highest_writing_score$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">writing Date?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "writing_date_months$i", "Select Months", isset($pte_academic_tests["writing_date_months$i"]) ? $pte_academic_tests["writing_date_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(range(1, 31), "writing_date_days$i", "dd", isset($pte_academic_tests["writing_date_days$i"]) ? $pte_academic_tests["writing_date_days$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "writing_date_years$i", "YYYY", isset($pte_academic_tests["writing_date_years$i"]) ? $pte_academic_tests["writing_date_years$i"] : "")?>
+		</div>
+	</div>
+	<?php endfor?>
+	</div>	
+</div>

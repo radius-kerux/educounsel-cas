@@ -1,0 +1,62 @@
+<div class="sectionContainer" data-column="testing" data-section_name="tests_taken">
+	<div>
+		<b>Tests Taken</b>
+	</div>
+	
+	<div>
+		<span class="clearfix">Careers Interests?*</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($tests_taken["career_interests"]) ? $value = $tests_taken["career_interests"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "career_interests", $value, TRUE, "conditionalQuestionForRadioButtons")?>
+	</div>
+	
+	
+	<?php (isset($tests_taken["career_interests"]) && $tests_taken["career_interests"] != "No")? $class="" : $class="hide";?>
+	<div class="career_interests <?php echo $class?>" data-answer="Yes">
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["act_tests"]) && $tests_taken["act_tests"]  != "" )? "checked" : ""; ?> value="Act Tests" name="act_tests" />
+				<span>Act Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["sat_tests"]) && $tests_taken["sat_tests"]  != "" )? "checked" : ""; ?> value="SAT Tests" name="sat_tests" />
+				<span>SAT Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["sat_subject_tests"]) && $tests_taken["sat_subject_tests"]  != "" )? "checked" : ""; ?> value="SAT Subject Tests" name="sat_subject_tests" />
+				<span>SAT Subject Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["ap_subject_tests"]) && $tests_taken["ap_subject_tests"]  != "" )? "checked" : ""; ?> value="AP Subject Tests" name="ap_subject_tests" />
+				<span>AP Subject Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["ib_subject_tests"]) && $tests_taken["ib_subject_tests"]  != "" )? "checked" : ""; ?> value="IB Subject Tests" name="ib_subject_tests" />
+				<span>IB Subject Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["toefl_ibt"]) && $tests_taken["toefl_ibt"]  != "" )? "checked" : ""; ?> value="TOEFL iBT" name="toefl_ibt" />
+				<span>TOEFL iBT</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["toefl_paper"]) && $tests_taken["toefl_paper"]  != "" )? "checked" : ""; ?> value="TOEFL Paper" name="toefl_paper" />
+				<span>TOEFL Paper</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["pte_academic_tests"]) && $tests_taken["pte_academic_tests"]  != "" )? "checked" : ""; ?> value="PTE Academic Tests" name="pte_academic_tests" />
+				<span>PTE Academic Tests</span>
+		</span>
+		<span class="clearfix">
+				<input type="checkbox" <?php echo (isset($tests_taken["ielst"]) && $tests_taken["ielst"]  != "" )? "checked" : ""; ?> value="IELST" name="ielst" />
+				<span>IESLT</span>
+		</span>
+	</div>
+	
+	<div>
+		<span class="clearfix">International applicants; Is promotion within your educational system based upon stadandard leaving examination given at the end of the lower
+		and/or senior secondary school by a state or national leaving examinations board?
+		</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($tests_taken["career_interests"]) ? $value = $tests_taken["career_interests"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "career_interests", $value, TRUE, "conditionalQuestionForRadioButtons")?>
+	</div>
+</div>

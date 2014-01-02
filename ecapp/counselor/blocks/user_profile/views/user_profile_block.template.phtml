@@ -1,8 +1,16 @@
 <div class="accountPanel clearfix">
-	<span class="profileImage mRm fleft" style="background-image:url('data:image/jpg;JPEG;gif;png;base64,<?=$data['photo']?>');"></span>
-	<p>Account Settings</p>
-	<a href="/user/edit-profile">Edit Profile</a>
-	<a href="#" title="Logout">Log out</a>
+	<span class="profileImage fleft" style="background-image:url('<?=$data['photo']?>');"></span>
+	<div id="accountDetails" class="fright pLm clearfix">
+		<p><?=ucwords($data['firstname'])?> <?=ucwords($data['lastname'])?></p><br />
+		<p>ID#<?=ucwords($data['user_id'])?></p><span class="fright pointer showMore">show more</span>
+		<br />
+		<p><?=ucwords($data['role_id'])?></p><br />
+		<div class="accountMenu hide posAbs">
+			<p>Account Settings</p><br />
+			<a href="/user/edit-profile">Edit Profile</a><br />
+			<a href="/user/logout" title="Logout">Log out</a>
+		</div>
+	</div>
 	<!-- <img src="data:image/jpg;JPEG;gif;png;base64,<?//=$data['photo']?>">  -->
 	<!--<span><?//=$data['username']?></span><br/>
 	<span><?//=ucwords($data['firstname'])?> <?=ucwords($data['lastname'])?></span><br/>

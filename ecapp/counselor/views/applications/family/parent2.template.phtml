@@ -1,0 +1,54 @@
+<div class="sectionContainer" data-column="family" data-section_name="parent2">
+	<div>
+		<b>Parent 2</b>
+	</div>
+	<div>
+		<span class="clearfix">Parent 2 Type*</span>
+		<?php $values = array("Father", "Mother", "Unknown")?>
+		<?php isset($parent2["parent1_type"]) ? $value = $parent2["parent1_type"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "parent1_type", "Select Type", $value)?>
+	</div>
+	<div>
+		<span class="clearfix">Is parent living?*</span>
+		<?php $values = array("Yes" => "Yes", "No" => "No")?>
+		<?php isset($parent2["is_parent_living"]) ? $value = $parent2["is_parent_living"] : $value = "" ?>
+		<?php echo htmlRenderer::makeRadioButtons($values, "is_parent_living", $value, TRUE, "conditionalQuestionForRadioButtons")?>
+	</div>
+
+	<?php (isset($parent2["is_parent_living"]) && $parent2["is_parent_living"] != "No")? $class="hide" : $class="";?>
+	<div class="is_parent_living <?php echo $class?>" data-answer="No">
+		<div>
+			<span class="clearfix">Date Deceased?</span>
+			<input type="text" name="date_deceased" value="<?php echo isset($parent2["date_deceased"]) ? $parent2["date_deceased"] : "" ?>" />
+		</div>
+	</div>
+
+	<div>
+		<span class="clearfix">Prefix*</span>
+		<?php $values = array("Mr.", "Ms.", "Mrs.", "Dr.")?>
+		<?php isset($parent2["prefix"]) ? $value = $parent2["prefix"] : $value = "" ?>
+		<?php echo htmlRenderer::makeSelectInput($values, "prefix", "Select Prefix", $value)?>
+	</div>
+	
+	<div>
+		<span class="clearfix">First/Given Name*</span>
+		<input type="text" name="first_name" value="<?php echo isset($parent2["first_name"]) ? $parent2["first_name"] : "" ?>" />
+	</div>
+		
+	<div>
+		<span class="clearfix">Middle Initial*</span>
+		<input type="text" name="middle_initial" value="<?php echo isset($parent2["middle_initial"]) ? $parent2["middle_initial"] : "" ?>" />
+	</div>
+		
+	<div>
+		<span class="clearfix">Last Name*</span>
+		<input type="text" name="last_name" value="<?php echo isset($parent2["last_name"]) ? $parent2["last_name"] : "" ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Suffix</span>
+		<?php $values = array("Jr.", "Sr.", "I", "II", "III")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "suffix", "Suffix", isset($parent2["suffix"]) ? $parent2["suffix"] : "")?>
+	</div>
+		
+</div>

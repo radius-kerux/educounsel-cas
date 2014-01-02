@@ -1,0 +1,34 @@
+<div class="sectionContainer" data-column="testing" data-section_name="ap_subject_tests">
+	<div>
+		<b>ap Subject Tests</b>
+	</div>
+	
+	<div>
+		<span class="clearfix">Number of AP Subject Test you wish to report, including tests you epect to take*?</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_ap_subject", "", isset($ap_subject_tests["number_of_ap_subject"]) ? $ap_subject_tests["number_of_ap_subject"] : "", "selectCounter")?>
+	</div>
+
+	<div id="number_of_ap_subject">
+	<?php (isset($ap_subject_tests["number_of_ap_subject"]))? $counter = $ap_subject_tests["number_of_ap_subject"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_ap_subject_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+		<div>
+			<span class="clearfix">Date taken or planned?*</span>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "date_taken_months$i", "Select Months", isset($ap_subject_tests["date_taken_months$i"]) ? $ap_subject_tests["date_taken_months$i"] : "")?>
+			<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "date_taken_years$i", "YYYY", isset($ap_subject_tests["date_taken_years$i"]) ? $ap_subject_tests["date_taken_years$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Subject?*</span>
+			<?php $values = array("Chemistry","English", "Math")?>
+			<?php echo htmlRenderer::makeSelectInput($values, "subject$i", "", isset($ap_subject_tests["subject$i"]) ? $ap_subject_tests["subject$i"] : "")?>
+		</div>
+		<div>
+			<span class="clearfix">Score</span>
+			<?php echo htmlRenderer::makeSelectInput(range(800, 850), "score$i", "", isset($ap_subject_tests["score$i"]) ? $ap_subject_tests["score$i"] : "")?>
+		</div>
+	</div>
+	<?php endfor?>
+	</div>	
+</div>

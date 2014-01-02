@@ -18,22 +18,17 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	public function main()
 	{
-		//displayPhtml gets the contents of the specified Phtml file				
-		//Then SPINE will put it in the place of specified section
-		//The first parameter is the section in the template where the contents of phtml file will be placed
-		//Sections are markings inside the Phtml files that are notated in this way: <spine::header/> where header is the name of the section
-		//The second parameter for displayPhtml is the path to Phtml files
-		//By convention the files should always have .template appended to its name before the phtml file extension
-		//So if you want your Phtml file named hello_world your actual file should be named hello_world.template.phtml
-		//In passing the path to the Phtml file, the whole path should not be included, only its path from the views folder
-		//Do not include the .template.phtml suffix when you pass the phtml path parameter
-		//So if your file is located at website/views/sample/hello_world.template.phtml your path-to-phtml parameter is 'sample/hello_world'
-		//The third parameter is the $params - this actually are the data that you want to pass to your templates
-		//$params should be an associative array, you can access this data by using their array keys as variable name
-		//For example if you have array('title'=>'Hello World') you can utilize the data by accessing $title in the templates
+		$this->loadClasses();
+		doAuth(); //a function inside plugins/global_functions/auth_functions.php
+
+		if (Spine_SessionRegistry::getSession('auth', 'role_id') < 2)
+		{
+			header('location: user/logout/');
+			exit();
+		}
 		
 		$params = array(
-							'title'=>'Admin\'s Module',
+							'title'=>'Receptionist\'s Module',
 		);
 		
 		$this->displayPhtml('main_phtml', 'main/main', $params); //Rendering of main template
@@ -41,6 +36,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 		$this->getGlobalScripts();
 		$this->getLocalScripts();
 		$this->getProjectStylesheets();
+		$this->loadSiteWideModules();
 		//Spine_GlobalRegistry::viewRegistryContent();
 	}
 	
@@ -60,7 +56,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getGlobalScripts()
+	private function getGlobalScripts()
 	{
 		//includeExternalScript gets the specified scripts so SPINE can compile them as an external script
 		//The first parameter is the section in which this scripts will be included
@@ -72,7 +68,7 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getProjectStylesheets()
+	private function getProjectStylesheets()
 	{
 		//includeStyleSheet gets the specified style sheets so SPINE can compile them as an external stylesheet
 		//The first parameter is the section in which this stylesheet will be included
@@ -85,10 +81,29 @@ class mainController extends Spine_SuperController implements Spine_MainInterfac
 	
 	//------------------------------------------------------------------------------------
 	
-	public function getLocalScripts()
+	private function getLocalScripts()
 	{
 		//includeInPageScript gets the specified local script so SPINE can put them in place of the specified section as an inpage script
 		$this->includeInPageScript('local_top_script','main/js/local_top_script.js');
 		$this->includeInPageScript('local_bottom_script','main/js/local_bottom_script.js');
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function loadClasses ()
+	{
+		$classes_array	=	array(
+			'pdo_helper/Db.class',
+			'auth/Authentication'
+		);
+		
+		$this->loadSpineClasses($classes_array);
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function loadSiteWideModules()
+	{
+		$this->loadModule('restfulCurl');
 	}
 }

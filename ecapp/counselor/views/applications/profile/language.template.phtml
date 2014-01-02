@@ -1,0 +1,40 @@
+<div class="sectionContainer" data-column="profile" data-section_name="language">
+	<div>
+		<span>Language</span>
+	</div>
+	
+	<div>
+		<span class="clearfix">Number of language(s) you are proficient in*</span>
+		<?php $values = array("1", "2", "3", "4", "5", "6", "7")?>
+		<?php echo htmlRenderer::makeSelectInput($values, "number_of_language", "Number of language", isset($language["number_of_language"]) ? $language["number_of_language"] : "", "selectCounter")?>
+	</div>
+
+	<div id="number_of_language">
+	<?php (isset($language["number_of_language"]))? $number_of_language = $language["number_of_language"] :  $number_of_language = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($number_of_language < $i)? $class = "hide" : $class = ""; ?>
+		<div id="number_of_language_container<?php echo $i?>" class="<?php echo $class?>">		
+			<div>
+				<span class="clearfix">Select Language*</span>
+				<?php $values = array("English", "Tagalog", "Nihongo")?>
+				<?php echo htmlRenderer::makeSelectInput($values, "language".$i, "Select language", isset($language["language".$i]) ? $language["language".$i] : "")?>
+			</div>
+			<div>
+				<span class="clearfix">Language Proficiency*</span>
+				<span class="clearfix">
+					<input type="checkbox" <?php echo (isset($language["first_language".$i]) && $language["first_language".$i]  != "" )? "checked" : ""; ?> value="First Language" name="first_language<?php echo $i?>" /><span>First Language</span>
+				</span>
+				<span class="clearfix">
+					<input type="checkbox" <?php echo (isset($language["read".$i]) && $language["read".$i]  != "" )? "checked" : ""; ?> value="Read" name="read<?php echo $i?>" /><span>Read</span>
+				</span>
+				<span class="clearfix">
+					<input type="checkbox" <?php echo (isset($language["write".$i]) && $language["write".$i]  != "" )? "checked" : ""; ?> value="Write" name="write<?php echo $i?>" /><span>Write</span>
+				</span>
+				<span class="clearfix">
+					<input type="checkbox" <?php echo (isset($language["speak".$i]) && $language["speak".$i]  != "" )? "checked" : ""; ?> value="Speak" name="speak<?php echo $i?>" /><span>Speak</span>
+				</span>
+			</div>
+		</div>
+	<?php endfor?>
+	</div>		
+</div>

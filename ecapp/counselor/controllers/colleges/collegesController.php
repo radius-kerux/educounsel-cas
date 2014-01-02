@@ -9,8 +9,7 @@ class collegesController extends Spine_SuperController
 	
 	public function indexAction()
 	{
-		$colleges_array	=	$this->sortCollegesAlphabetically();
-		$this->displayPhtml('content', 'colleges/colleges_main', array('colleges' => $colleges_array));
+		$this->displayPhtml('content', 'colleges/colleges_main', array('colleges' => $this->sortCollegesAlphabetically(), 'alphabet' => $this->getAlphabetArray()));
 	}
 	
 	//------------------------------------------------------------------------------------
@@ -26,8 +25,8 @@ class collegesController extends Spine_SuperController
 			$college_list		=	$this->getCollegeList();
 			$email_address		=	$this->getCollegeEmailAddress($college_list, $college_code);
 			$college_profile	=	$this->getCollegeProfile($college_code);
-			
-			$result				=	array('college_profile' => $college_profile, 'email_address' => $email_address);
+
+			$result				=	array('college_profile' => $college_profile, 'email_address' => $email_address, 'address' => $this->getAddress($college_profile));
 			
 			$this->cache('college_profile'.$college_code, $result); //cache result
 		}
@@ -42,7 +41,7 @@ class collegesController extends Spine_SuperController
 		if (verifyCurlToken() != 401)
 		{
 			$result	=	$this->checkCache('colleges');
-
+			
 			if (!$result)
 			{
 				$restful_curl	=	new	restfulCurl();
@@ -54,6 +53,7 @@ class collegesController extends Spine_SuperController
 				$result	=	$restful_curl->result;
 
 				$this->cache('colleges', $result);
+				
 				if ($status	== 200)
 					return	$result;
 					
@@ -184,5 +184,66 @@ class collegesController extends Spine_SuperController
 			$this->cache('colleges_sorted_alphabetically', $colleges_array);
 		}
 		return	$colleges_array;
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function getAlphabetArray()
+	{
+		return	range('A', 'Z');
+	}
+	
+	//------------------------------------------------------------------------------------
+	
+	private function getAddress($source)
+	{
+		$this->loadModule('simplehtmldom/simple_html_dom');
+		
+		$html	=	str_get_html($source);
+		$html->find('h1');
+		$address	=	'';
+		
+		foreach ($html->find('h2') as $i => $h2)
+			{
+				if (trim($h2->plaintext) == 'Main Address')
+				{
+					$p	=	$h2->next_sibling();
+					
+					while ($p != NULL)
+					{
+						if (($p->tag == 'p') && (strpos($p->plaintext, 'www') === FALSE) && !empty($p->plaintext))
+						{
+							$address	.=	' '.rtrim($p->plaintext);
+						}
+						$p	=	$p->next_sibling();
+					}
+				}
+			}
+			
+		return	$address;
+	}
+	
+	//------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------
+	//AJAX Methods
+	
+	public function sampleAjaxAction()
+	{
+		if (isset($_POST))
+		{
+			$search_string		=	$_POST['search_string'];
+			$colleges			=	$this->getCollegeList();
+			$colleges			=	json_decode($colleges, TRUE);
+			$levenshtein_array	=	array();
+			
+			foreach ($colleges as $college_index => $college)
+			{
+				$levenshtein_array[levenshtein($search_string, $college['college_name'])][$college['college_code']]	=	$college['college_name'];
+			}
+			
+			ksort($levenshtein_array);
+			$levenshtein_array	=	array_slice($levenshtein_array, 0, 10);
+			dumpData($levenshtein_array);
+		}
 	}
 }

@@ -1,0 +1,36 @@
+<div class="sectionContainer" data-column="writing"
+	data-section_name="personal_essay">
+	<div>
+		<b>Personal Essay</b>
+	</div>
+
+	<div>
+		<span class="clearfix">The essay demonstrates the ability to write
+			clearly and consisely on a selected topics and helps you distinguish
+			yourself in your own voice. What do you want the readers of your
+			applications to know you apart from courses, grades, and test scores?
+			Choose the option that best helps you answer that question and write
+			an essay if no more than 650 words is your limit, not your goal. Use
+			the full range if you need it, but don't feel obligated to do so.
+			(The application won't accept a response shorter than 250 words). </span>
+		
+		
+		<?php 
+		$values = array(
+		"Some students have a background or story that is so central to their identity that they beleive their application would complete without it.
+		If this sounds like you, then please shaer your story",
+		
+		"Recount an incident or time when you experienced failure. How did it affect you, and what lessons did you learn?",
+		
+		"Reflect on a time when you challenged a beleif or idea. What prompted you to act? Would you make the same decision again?",
+		
+		"Describe a place environment where you are perfectly content. What do you do or experience there,  and why is it meaningful to you?",
+		
+		"Discuss an accomplishment or event, formal or informal, that maked your transition from childhood to adulthood within your culture, community, or family."
+		
+		);
+		
+		?>
+		<?php echo htmlRenderer::makeSelectInput($values, "essay", "", isset($personal_essay["essay"]) ? $personal_essay["essay"] : "")?>
+	</div>
+</div>

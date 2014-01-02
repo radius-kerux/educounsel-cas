@@ -1,0 +1,46 @@
+<div class="sectionContainer" data-column="education" data-section_name="grades">
+	<div>
+		<b>Grades</b>
+	</div>
+
+	<div>
+		<span class="clearfix">Class rank reporting</span>
+		<?php $values = array("Decile", "Exact", "Quitile", "Quartile", "None");?>
+		<?php echo htmlRenderer::makeSelectInput($values, "class_rank", "Class rank", isset($grades["class_rank"]) ? $grades["class_rank"] : "", "conditionalQuestionForSelect")?>
+	</div>
+	
+	<!-- conditional divs for decile -->
+	<?php (isset($grades["class_rank"]) && $grades["class_rank"] == "Decile")? $class="" : $class="hide";?>
+	<div class="class_rank <?php echo $class?>" data-answer="Decile">
+		<div>
+			<span class="clearfix">Decile Rank</span>
+			<?php $values = array("10%", "20%", "30%", "40%", "50%");?>
+			<?php echo htmlRenderer::makeSelectInput($values, "decile_rank", "", isset($grades["decile_rank"]) ? $grades["decile_rank"] : "")?>
+		</div>
+	</div>
+
+	<div>
+		<span class="clearfix">Rank weighting</span>
+		<input type="text" name="rank_weighting"  value="<?php echo isset($grades["rank_weighting"]) ? $grades["rank_weighting"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Graduating class size</span>
+		<input type="text" name="graduating_class_size"  value="<?php echo isset($grades["graduating_class_size"]) ? $grades["graduating_class_size"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">Cumulated GPA</span>
+		<input type="text" name="cumulated_gpa"  value="<?php echo isset($grades["cumulated_gpa"]) ? $grades["cumulated_gpa"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">GPA scale</span>
+		<input type="text" name="gpa_scale"  value="<?php echo isset($grades["gpa_scale"]) ? $grades["gpa_scale"] : ""; ?>" />
+	</div>
+	
+	<div>
+		<span class="clearfix">GPA weighing</span>
+		<input type="text" name="gpa_weighing"  value="<?php echo isset($grades["gpa_weighing"]) ? $grades["gpa_weighing"] : ""; ?>" />
+	</div>
+</div>

@@ -1,0 +1,71 @@
+<div class="sectionContainer" data-column="education" data-section_name="honors">
+	<div>
+		<b>Honors</b>
+	</div>
+
+	<div>
+		<span class="clearfix">How many honors would you like to report?</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 10), "number_of_honors", "", isset($honors["number_of_honors"]) ? $honors["number_of_honors"] : "", "selectCounter")?>
+	</div>
+	
+	<div id="number_of_honors">
+	<?php (isset($honors["number_of_honors"]))? $counter = $honors["number_of_honors"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+	<div id="number_of_honors_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+			
+		<div>
+			<span class="clearfix">Honors Title</span>
+			<input type="text" name="honors<?php echo $i?>"  value="<?php echo isset($honors["honors$i"]) ? $honors["honors$i"] : ""; ?>" />
+		</div>
+		
+		<div>
+			<input type="checkbox" name="grade_level_9<?php echo $i?>" <?php echo (isset($honors["grade_level_9$i"]) && $honors["grade_level_9$i"]  != "" )? "checked" : ""; ?> value="9"  />
+			<span>9</span>
+		</div>
+		
+		<div>
+			<input type="checkbox" name="grade_level_10<?php echo $i?>" <?php echo (isset($honors["grade_level_10$i"]) && $honors["grade_level_10$i"]  != "" )? "checked" : ""; ?> value="10"  />
+			<span>10</span>
+		</div>
+		
+		<div>
+			<input type="checkbox" name="grade_level_11<?php echo $i?>" <?php echo (isset($honors["grade_level_11$i"]) && $honors["grade_level_11$i"]  != "" )? "checked" : ""; ?> value="10"  />
+			<span>11</span>
+		</div>
+		
+		<div>
+			<input type="checkbox" name="grade_level_12<?php echo $i?>" <?php echo (isset($honors["grade_level_12$i"]) && $honors["grade_level_12$i"]  != "" )? "checked" : ""; ?> value="10"  />
+			<span>12</span>
+		</div>
+		
+		<div>
+			<input type="checkbox" name="grade_level_pg<?php echo $i?>" <?php echo (isset($honors["grade_level_pg$i"]) && $honors["grade_level_pg$i"]  != "" )? "checked" : ""; ?> value="10"  />
+			<span>12</span>
+		</div>
+		
+	</div>
+	<?php endfor?>
+	</div>	
+	
+	<div>
+		<span class="clearfix">Highest level of recognition</span>
+		<div>
+			<input type="checkbox" name="school_recognition" <?php echo (isset($honors["school_recognition"]) && $honors["school_recognition"]  != "" )? "checked" : ""; ?> value="school"  />
+			<span>School</span>
+		</div>
+		<div>
+			<input type="checkbox" name="state_recognition" <?php echo (isset($honors["state_recognition"]) && $honors["state_recognition"]  != "" )? "checked" : ""; ?> value="state"  />
+			<span>State</span>
+		</div>
+		<div>
+			<input type="checkbox" name="national_recognition" <?php echo (isset($honors["national_recognition"]) && $honors["national_recognition"]  != "" )? "checked" : ""; ?> value="national"  />
+			<span>National</span>
+		</div>
+		<div>
+			<input type="checkbox" name="international_recognition" <?php echo (isset($honors["international_recognition"]) && $honors["international_recognition"]  != "" )? "checked" : ""; ?> value="international"  />
+			<span>International</span>
+		</div>
+	</div>
+</div>

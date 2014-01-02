@@ -1,0 +1,76 @@
+<div class="sectionContainer" data-column="education" data-section_name="college_and_universities">
+	<div>
+		<b>College and Universities</b>
+	</div>
+
+	<div>
+		<span class="clearfix">If you have taken a college/university course beginning with 9th grade, please indicate number of colleges*</span>
+		<?php echo htmlRenderer::makeSelectInput(range(0, 15), "number_of_colleges", "Number of School", isset($college_and_universities["number_of_colleges"]) ? $college_and_universities["number_of_colleges"] : "", "selectCounter")?>
+	</div>
+	
+	<div id="number_of_colleges">
+	<span>Course Detalils</span>
+	<?php (isset($college_and_universities["number_of_colleges"]))? $counter = $college_and_universities["number_of_colleges"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+		<div id="number_of_colleges_container<?php echo $i?>" class="<?php echo $class?>">
+		<hr />
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["taught_online".$i]) && $college_and_universities["taught_online".$i]  != "" )? "checked" : ""; ?> value="Course taught online" name="taught_online<?php echo $i?>" />
+				<span>Taught Online</span>
+			</div>
+			
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["taught_collge_campus".$i]) && $college_and_universities["taught_collge_campus".$i]  != "" )? "checked" : ""; ?> value="Course on College campus" name="taught_collge_campus<?php echo $i?>" />
+				<span>Course on College campus</span>
+			</div>
+			
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["taught_secondary_campus".$i]) && $college_and_universities["taught_secondary_campus".$i]  != "" )? "checked" : ""; ?> value="Taught on secondary / high school campus (exluding AP/IB)" name="taught_secondary_campus<?php echo $i?>" />
+				<span>Taught on secondary / high school campus (exluding AP/IB)</span>
+			</div>
+			
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["college_credit_awarded".$i]) && $college_and_universities["college_credit_awarded".$i]  != "" )? "checked" : ""; ?> value="College credit awarded" name="college_credit_awarded<?php echo $i?>" />
+				<span>College credit awarded</span>
+			</div>
+			
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["transcript_available".$i]) && $college_and_universities["transcript_available".$i]  != "" )? "checked" : ""; ?> value="Transcript Available" name="transcript_available<?php echo $i?>" />
+				<span>Transcript Available</span>
+			</div>
+
+			<div>
+				<input type="checkbox" <?php echo (isset($college_and_universities["degree_candidate".$i]) && $college_and_universities["degree_candidate".$i]  != "" )? "checked" : ""; ?> value="Degree Candidate" name="degree_candidate<?php echo $i?>" />
+				<span>Degree Candidate</span>
+			</div>
+			
+			<div>
+				<span>From Date</span>
+				<div>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "from_date_months$i", "Select Month", isset($college_and_universities["from_date_months$i"]) ? $college_and_universities["from_date_months$i"] : "")?>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "from_date_years$i", "Select Year", isset($college_and_universities["from_date_years$i"]) ? $college_and_universities["from_date_years$i"] : "")?>
+				</div>
+			</div>
+			
+			<div>
+				<span>To Date</span>
+				<div>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "to_date_months$i", "Select Month", isset($college_and_universities["to_date_months$i"]) ? $college_and_universities["to_date_months$i"] : "")?>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "to_date_years$i", "Select Year", isset($college_and_universities["to_date_years$i"]) ? $college_and_universities["to_date_years$i"] : "")?>
+				</div>
+			</div>
+			
+			<div>
+				<span>Degree Earned</span>
+				<div>
+				<?php echo htmlRenderer::makeSelectInput(array("BA", "BS", "AB"), "degree_earned$i", "Select degree", isset($college_and_universities["degree_earned$i"]) ? $college_and_universities["degree_earned$i"] : "")?>
+				</div>
+			</div>
+			
+		</div>
+	<?php endfor?>
+	</div>	
+	
+
+</div>

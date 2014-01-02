@@ -11,20 +11,28 @@ class routes extends Spine_RouteAbstract
 {
 //------------------------------------------------------------------------------------
 	private $routes = array (
-	'home'	=>	array( // home is the url for the folder specified by _name index
-			'_name'	=> 'home', //indexes that start with underscore are keywords
-					'learn-more'	=>	array(	//from here on the indexes will be treated as folder name
-						'_name'	=> 'learn'
-			)
-		),
-	'about-us'	=>	array(
-			'_name'	=>	'about'
-		),
-	'contact-us'	=>	array(
-			'_name'	=>	'contact'
-		),
-		
-	'_default'	=>	'home' //so home is the dafault
+		'dashboard'			=>	array(
+				'_name'		=> 'dashboard' 
+			),
+		'user'				=>	array(
+				'_name'		=>	'user'
+			),
+		'activities'		=>	array(
+				'_name'		=>	'activities'
+			),
+		'applications'		=>	array(
+				'_name'		=>	'applications'
+			),
+		'colleges'			=>	array(
+				'_name'		=>	'colleges'
+			),
+		'counselors'		=>	array(
+				'_name'		=>	'counselors'
+			),
+		'payment'			=>	array(
+				'_name'		=>	'payment'
+			),
+		'_default'			=>	'dashboard' 
 	);
 
 //------------------------------------------------------------------------------------
@@ -33,7 +41,7 @@ class routes extends Spine_RouteAbstract
 	{
 		//uncomment this if you do not want to use this routing
 		//return	=	FALSE;
-
+		
 		return $this->routes;
 	}
 }

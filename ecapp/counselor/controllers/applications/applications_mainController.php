@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 
  * Folder specific main class controller can be set up this way :
@@ -13,6 +12,10 @@ class applications_mainController extends Spine_SuperController implements Spine
 	
 	public function main()
 	{
+		$this->displayPhtml( 'main_content', 'applications/applications_main' );
+		$this->displayPhtml( 'side_navigation', 'applications/side_navigation');
+		
+		$this->includeInPageScript( 'local_bottom_script', 'applications/js/forms.js' );
 	}
 	
 	//------------------------------------------------------------------------------------

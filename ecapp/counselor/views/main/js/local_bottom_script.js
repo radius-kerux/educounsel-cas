@@ -4,4 +4,8 @@ $(document).ready(function(){
 		
 		$.php('/new/sampleAjax', { query:query });
 	});
+//	*****************show for account panel*************
+	$('.showMore').click(function(){
+		$('.accountMenu').slideToggle();
+	});
 });

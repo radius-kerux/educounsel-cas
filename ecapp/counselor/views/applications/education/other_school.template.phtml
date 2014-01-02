@@ -1,0 +1,67 @@
+<div class="sectionContainer" data-column="education" data-section_name="other_school">
+	<div>
+		<b>School</b>
+	</div>
+
+	<div>
+		<span class="clearfix">If you have attended other school, please indicate number of scools*</span>
+		<?php $values = array("None", "1", "2", "3", "4", "5", "6", "7" )?>
+		<?php echo htmlRenderer::makeSelectInput($values, "number_of_other_school", "How many other school?", isset($other_school["number_of_other_school"]) ? $other_school["number_of_other_school"] : "", "selectCounter")?>
+	</div>
+	
+	<div id="number_of_other_school">
+	<?php (isset($other_school["number_of_other_school"]))? $counter = $other_school["number_of_other_school"] :  $counter = 0;?>
+	<?php for($i=1; $i<=7; $i++):?>
+	<?php ($counter < $i)? $class = "hide" : $class = ""; ?>
+		<div id="other_school_container<?php echo $i?>" class="<?php echo $class?>">
+			<div>
+				<span class="clearfix">High Shool Name <?php echo $i?>*</span>
+				<input type="text" name="high_school<?php echo $i?>"  value="<?php echo isset($other_school["high_school".$i]) ? $other_school["high_school".$i] : ""; ?>" />
+			</div>
+		
+			<div>
+				<span class="clearfix">Country <?php echo $i?>*</span>
+				<?php $values = array("Philippies", "United States", "Italy", "Spain")?>
+				<?php echo htmlRenderer::makeSelectInput($values, "country$i", "Select Country", isset($other_school["country".$i]) ? $other_school["country".$i] : "")?>
+			</div>
+			
+			<div>
+				<span class="clearfix">School Type <?php echo $i?>*</span>
+				<?php $values = array("Charter", "Public", "Religous", "Home School", "Independent")?>
+				<?php echo htmlRenderer::makeSelectInput($values, "school_type$i", "Select School Type", isset($other_school["school_type".$i]) ? $other_school["school_type".$i] : "")?>
+			</div>
+			
+			<div>
+				<span class="clearfix">Address Line 1*</span>
+				<input type="text" name="address_line_1_<?php echo $i?>"  value="<?php echo isset($other_school["address_line_1_$i"]) ? $other_school["address_line_1_$i"] : ""; ?>" />
+			</div>
+			
+			<div>
+				<span class="clearfix">Address Line 2*</span>
+				<input type="text" name="address_line_2_<?php echo $i?>"  value="<?php echo isset($other_school["address_line_2_$i"]) ? $other_school["address_line_2_$i"] : ""; ?>" />
+			</div>
+			
+			<div>
+				<span class="clearfix">City</span>
+				<input type="text" name="city<?php echo $i?>"  value="<?php echo isset($other_school["city$i"]) ? $other_school["city$i"] : ""; ?>" />
+			</div>
+			
+			<div>
+				<span class="clearfix">State or Province</span>
+				<input type="text" name="state_or_province<?php echo $i?>"  value="<?php echo isset($other_school["state_or_province$i"]) ? $other_school["state_or_province$i"] : ""; ?>" />
+			</div>
+			
+			<div>
+				<span class="clearfix">Postal Code</span>
+				<input type="text" name="postal_code<?php echo $i?>"  value="<?php echo isset($other_school["postal_code$i"]) ? $other_school["postal_code$i"] : ""; ?>" />
+			</div>
+			
+			<div>
+				<span class="clearfix">Date Of Entry*</span>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("months"), "date_of_entry_months$i", "Select Months", isset($other_school["date_of_entry_months$i"]) ? $other_school["date_of_entry_months$i"] : "")?>
+				<?php echo htmlRenderer::makeSelectInput(htmlRenderer::getArrayItems("years"), "date_of_entry_years$i", "YYYY", isset($other_school["date_of_entry_years$i"]) ? $other_school["date_of_entry_years$i"] : "")?>
+			</div>
+		</div>
+	<?php endfor?>
+	</div>	
+</div>
